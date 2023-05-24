@@ -7,15 +7,20 @@ import { PaletteOptions } from "@mui/material";
 export const Colors = {
   // 브랜드 컬러
   brand: {
-    primary: "#2951D7",
-    primaryShade1: "#2951D7dd",
-    primaryShade2: "#2951D7bb",
+    primary: "#5F0091",
+    yellow: "#f3ff4c",
+    lightGreen: "#74ff4b",
+    mint: "#00E7FF",
   },
 
   // 텍스트 컬러
   text: {
     primary: "#546E7A",
     secondary: "#001356",
+    variant1: "#44455f",
+    varaint3: "#c1c3f4",
+    variant4: "#E5D0D0",
+    variant5: "#EAEAEA",
   },
 
   // 회색 계통
