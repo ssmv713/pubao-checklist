@@ -7,7 +7,7 @@ import { Colors } from "@/common/theme";
 import { useTranslation } from "react-i18next";
 import { SelectBox } from "../selectBox/SelectBox";
 
-const menus = ["Overveiew", "Prize", "Rules", "Contact Us"];
+const menus = ["Overview", "Prize", "Rules", "Contact Us"];
 
 export const Header = () => {
   const { i18n } = useTranslation("landing");
