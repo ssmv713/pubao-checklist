@@ -57,7 +57,7 @@ export type AwardsCategoryType = {
   title: string;
   desc: string;
   items: AwardsItemsType[];
-  footnote: string;
+  footnote: string[];
 };
 
 export type AwardsItemsType = {
@@ -66,7 +66,7 @@ export type AwardsItemsType = {
     header: string[];
     content: {
       title: string;
-      awards: string;
+      award: string;
       amount: string;
     }[];
   };

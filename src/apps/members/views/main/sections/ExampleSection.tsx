@@ -78,7 +78,7 @@ export const ExampleSection = () => {
         <Typography
           textAlign={"center"}
           variant="h2"
-          color={Colors.text.varaint3}
+          color={Colors.text.variant3}
           css={st.bottom}
         >
           {parse(t("bottom"))}

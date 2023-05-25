@@ -43,8 +43,8 @@ const baseTypographyOptions: TypographyOptions = {
     fontWeight: 400,
   },
   body1: {
-    fontSize: "26px",
-    fontWeight: 400,
+    fontSize: "1.354vw", // 26px
+    fontWeight: 700,
   },
   body2: {
     fontSize: "1.25vw",

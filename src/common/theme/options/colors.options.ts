@@ -20,11 +20,11 @@ export const Colors = {
     primary: "#546E7A",
     secondary: "#001356",
     variant1: "#44455f",
-
-    varaint3: "#c1c3f4",
+    variant3: "#c1c3f4",
     variant4: "#E5D0D0",
     variant5: "#EAEAEA",
     variant6: "#ffe7d6",
+    variant7: "#010f21",
   },
   background: {
     variant2: "#ff6a00",
