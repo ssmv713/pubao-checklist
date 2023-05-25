@@ -71,3 +71,15 @@ export type AwardsItemsType = {
     }[];
   };
 };
+/////////rules///////
+
+export type RulesItemsType = {
+  title: {
+    text: string;
+    color: string;
+  };
+  card: {
+    rule: string;
+    footnote: string;
+  }[];
+};

@@ -1,8 +1,11 @@
 import {
   AwardsSection,
+  EmailSection,
   ExampleSection,
+  FooterSection,
   MainSection,
   RequirementsSection,
+  RulesSection,
   ThemeSection,
   VideoSection,
 } from "./sections";
@@ -16,6 +19,9 @@ export const MainView = () => {
       <ExampleSection />
       <RequirementsSection />
       <AwardsSection />
+      <RulesSection />
+      <EmailSection />
+      <FooterSection />
     </>
   );
 };

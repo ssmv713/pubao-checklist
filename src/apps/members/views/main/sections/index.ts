@@ -4,3 +4,6 @@ export * from "./ThemeSection";
 export * from "./ExampleSection";
 export * from "./RequirementsSection";
 export * from "./AwardsSection";
+export * from "./RulesSection";
+export * from "./EmailSection";
+export * from "./FooterSection";

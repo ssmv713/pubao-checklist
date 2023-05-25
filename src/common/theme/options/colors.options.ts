@@ -20,6 +20,7 @@ export const Colors = {
     primary: "#546E7A",
     secondary: "#001356",
     variant1: "#44455f",
+    variant2: "#818181",
     variant3: "#c1c3f4",
     variant4: "#E5D0D0",
     variant5: "#EAEAEA",
