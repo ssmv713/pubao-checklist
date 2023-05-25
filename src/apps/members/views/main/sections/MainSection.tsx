@@ -11,17 +11,8 @@ import { useTranslation } from "react-i18next";
 
 export const MainSection = () => {
   const { t, i18n } = useTranslation("main");
-  const getImagePath = () => {
-    const currentLanguage = i18n.language;
-    if (currentLanguage === "ko") {
-      return "/assets/images/k-culture-ko.png";
-    } else if (currentLanguage === "en") {
-      return "/assets/images/k-culture-en.png";
-    }
-    return "/assets/images/k-culture-ko.png";
-  };
 
-  const imagePath = getImagePath();
+  const title: string = t("title", { returnObjects: true });
   return (
     <Stack css={st.root} spacing="5.208vw">
       <div css={st.movie}>
@@ -34,11 +25,13 @@ export const MainSection = () => {
         <Header />
       </div>
       <div css={st.title}>
-        <Image src={imagePath} alt="title" fill />
+        <Image src={title} alt="title" fill />
       </div>
       <Button css={st.button}>
         <Stack direction="row" alignItems={"center"} spacing="0.938vw">
-          <Image src={download} alt="download" width={36} height={36} />
+          <div css={st.download}>
+            <Image src={download} alt="download" fill />
+          </div>
           <Typography color={Colors.common.white} variant="subtitle2">
             {t("download")}
           </Typography>
@@ -89,5 +82,10 @@ const st = {
     &:hover {
       background: ${Colors.brand.primary};
     }
+  `,
+  download: css`
+    position: relative;
+    width: 1.875vw;
+    height: 1.875vw;
   `,
 };

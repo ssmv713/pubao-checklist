@@ -5,6 +5,7 @@ import { Colors } from "./colors.options";
 // Mui - 공통 타이포그래피 옵션
 const baseTypographyOptions: TypographyOptions = {
   fontFamily: "Pretendard-Regular",
+
   allVariants: {
     color: Colors.text.primary,
     whiteSpace: "pre-wrap",
@@ -22,24 +23,24 @@ const baseTypographyOptions: TypographyOptions = {
     fontWeight: 400,
   },
   h4: {
-    fontSize: "60px", // 결제안내
+    fontSize: "60px", //
     fontWeight: 700,
   },
   h5: {
-    fontSize: "50px",
+    fontSize: "2.604vw", // 50px
     fontWeight: 700,
   },
   h6: {
-    fontSize: "42px",
-    fontWeight: 400,
+    fontSize: "2.188vw", //42px
+    fontWeight: 700,
   },
   subtitle1: {
-    fontSize: "34px",
+    fontSize: "1.771vw",
     fontWeight: 700,
   },
   subtitle2: {
-    fontSize: "1.563vw",
-    fontWeight: 700,
+    fontSize: "1.563vw", //30px
+    fontWeight: 400,
   },
   body1: {
     fontSize: "26px",

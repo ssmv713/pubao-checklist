@@ -18,11 +18,15 @@ export const Colors = {
     primary: "#546E7A",
     secondary: "#001356",
     variant1: "#44455f",
+
     varaint3: "#c1c3f4",
     variant4: "#E5D0D0",
     variant5: "#EAEAEA",
+    variant6: "#ffe7d6",
   },
-
+  background: {
+    variant2: "#ff6a00",
+  },
   // 회색 계통
   gray: {
     shade800: "#242424",

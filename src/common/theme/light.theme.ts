@@ -49,9 +49,9 @@ export const lightTheme = createTheme({
         root: {
           transition: "all 0.3s ease-in-out",
 
-          "&:hover": {
-            color: Colors.brand.primaryShade1,
-          },
+          // "&:hover": {
+          //   color: Colors.brand.primaryShade1,
+          // },
         },
       },
     },

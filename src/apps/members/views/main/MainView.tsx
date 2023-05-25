@@ -1,7 +1,9 @@
 import { css } from "@emotion/react";
 import {
+  AwardsSection,
   ExampleSection,
   MainSection,
+  RequirementsSection,
   ThemeSection,
   VideoSection,
 } from "./sections";
@@ -13,6 +15,8 @@ export const MainView = () => {
       <VideoSection />
       <ThemeSection />
       <ExampleSection />
+      <RequirementsSection />
+      <AwardsSection />
     </>
   );
 };
