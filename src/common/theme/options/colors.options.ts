@@ -28,6 +28,7 @@ export const Colors = {
   },
   background: {
     variant2: "#ff6a00",
+    variant3: "#292a3f",
   },
   // 회색 계통
   gray: {

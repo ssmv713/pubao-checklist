@@ -83,14 +83,13 @@ export const RequirementsSection = () => {
                 <dd css={st.table_desc}>
                   {Array.isArray(it.desc) ? (
                     it.desc.map((descItem, idx) => (
-                      <p key={idx}>
-                        <Typography
-                          color={Colors.background.variant2}
-                          variant="subtitle2"
-                        >
-                          {descItem}
-                        </Typography>
-                      </p>
+                      <Typography
+                        key={idx}
+                        color={Colors.background.variant2}
+                        variant="subtitle2"
+                      >
+                        {descItem}
+                      </Typography>
                     ))
                   ) : (
                     <Typography
