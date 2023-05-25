@@ -71,7 +71,3 @@ export type AwardsItemsType = {
     }[];
   };
 };
-
-export type AwardsTableType = {
-  header: string[];
-};

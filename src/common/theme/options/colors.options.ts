@@ -11,6 +11,8 @@ export const Colors = {
     yellow: "#f3ff4c",
     lightGreen: "#74ff4b",
     mint: "#00E7FF",
+    primaryShade1: "#2951D7dd",
+    primaryShade2: "#2951D7bb",
   },
 
   // 텍스트 컬러
