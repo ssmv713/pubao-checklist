@@ -38,7 +38,7 @@ export type SelectType = {
 export type ScheduleType = {
   title: string;
   lists: ScheduleListsType[];
-  desc: string;
+  desc: string | string[];
 };
 
 export type ScheduleListsType = {
