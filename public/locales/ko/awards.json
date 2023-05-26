@@ -16,7 +16,7 @@
             { "title": "금상", "award": "300만원", "amount": "1개" },
             { "title": "은상", "award": "200만원", "amount": "1개" },
             { "title": "동상", "award": "100만원", "amount": "1개" },
-            { "title": "인기상", "award": "50만원", "amount": "1개" }
+            { "title": "인기상", "award": "50만원", "amount": "2개" }
           ]
         }
       },

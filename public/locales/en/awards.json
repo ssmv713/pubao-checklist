@@ -1,0 +1,41 @@
+{
+  "awards": {
+    "title": "AWARD",
+    "desc1": "Total of 10 video productions to be awarded.",
+    "desc2": "Total Prize Money : 27,000,000 won"
+  },
+  "category": {
+    "title": "AWARD CATEGORY",
+    "desc": "Overall Winner (Grand Prize) : 6,000,000 won for 1 video production and an additional award from the Ministry of Culture, Sports and Tourism of the Republic of Korea",
+    "items": [
+      {
+        "desc": "<span className=\"bold\">GENERAL CREATOR</span>\nTotal of 7,000,000 won for 5 video productions",
+        "table": {
+          "header": ["Award", "Prize Money", "No. of Productions"],
+          "content": [
+            { "title": "Gold", "award": "3,000,000", "amount": "1 Video" },
+            { "title": "Silver", "award": "2,000,000", "amount": "1 Video" },
+            { "title": "Bronze", "award": "1,000,000", "amount": "1 Video" },
+            { "title": "Popularity", "award": "500,000", "amount": "2 Video" }
+          ]
+        }
+      },
+      {
+        "desc": "<span className=\"bold\">PROFESSIONAL CREATOR</span>\nTotal of 14,000,000 won for 4 video productions",
+        "table": {
+          "header": ["Award", "Prize Money", "No. of Productions"],
+          "content": [
+            { "title": "Gold", "award": "5,000,000", "amount": "1 Video" },
+            { "title": "Silver", "award": "4,000,000", "amount": "1 Video" },
+            { "title": "Bronze", "award": "3,000,000", "amount": "1 Video" },
+            { "title": "Popularity", "award": "2,000,000", "amount": "1 Video" }
+          ]
+        }
+      }
+    ],
+    "footnote": [
+      "*  If the submitted entries do not meet the screening requirements, they might not get chosen.",
+      "* Taxes and public utility charges shall be borne by the winner."
+    ]
+  }
+}

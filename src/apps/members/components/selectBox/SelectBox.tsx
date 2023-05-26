@@ -1,5 +1,7 @@
 import { useTranslation } from "react-i18next";
-import arrow from "@/assets/icons/purple_arrow_down.png";
+import purple_arrow from "@/assets/icons/purple_arrow_down.png";
+import white_arrow from "@/assets/icons/white_arrow_down.png";
+
 import { Stack, Typography } from "@mui/material";
 import { useState } from "react";
 import Image from "next/image";
@@ -11,7 +13,11 @@ const langs = [
   { lang: "English", value: "en" },
 ];
 
-export const SelectBox = () => {
+type SelectBoxType = {
+  scrollPosition: number;
+};
+
+export const SelectBox = ({ scrollPosition }: SelectBoxType) => {
   const { i18n } = useTranslation("landing");
   const handleLanguageChange = (language: string) => {
     i18n.changeLanguage(language);
@@ -39,12 +45,21 @@ export const SelectBox = () => {
           <Typography variant="body2" color={Colors.brand.primary}>
             {selectedLang}
           </Typography>
-          <Image src={arrow} alt="arrow" width={12} height={6} />
+          <Image
+            src={scrollPosition > 10 ? white_arrow : purple_arrow}
+            alt="arrow"
+            width={12}
+            height={6}
+          />
         </Stack>
         {isOpen && (
           <ul css={st.lists}>
             {langs.map((it, index) => (
-              <li key={index} onClick={() => handleClick(it.lang, it.value)}>
+              <li
+                css={st.lang}
+                key={index}
+                onClick={() => handleClick(it.lang, it.value)}
+              >
                 {it.lang}
               </li>
             ))}
@@ -67,5 +82,9 @@ const st = {
     top: 1.771vw;
     left: 0;
     cursor: pointer;
+  `,
+  lang: css`
+    color: ${Colors.brand.primary};
+    margin-top: 0.625vw;
   `,
 };

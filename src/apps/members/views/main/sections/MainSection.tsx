@@ -9,21 +9,23 @@ import movie from "@/assets/images/movie.png";
 import people from "@/assets/images/main_people.png";
 import { useTranslation } from "react-i18next";
 
-export const MainSection = () => {
+type MainSectionType = {
+  mainRef: React.RefObject<HTMLDivElement>;
+};
+
+export const MainSection = ({ mainRef }: MainSectionType) => {
   const { t, i18n } = useTranslation("main");
 
   const title: string = t("title", { returnObjects: true });
   return (
-    <Stack css={st.root} spacing="5.208vw">
+    <Stack ref={mainRef} css={st.root} spacing="5.208vw" id="main">
       <div css={st.movie}>
         <Image src={movie} alt="movie" fill />
       </div>
       <div css={st.people}>
         <Image src={people} alt="people " fill />
       </div>
-      <div css={st.header}>
-        <Header />
-      </div>
+
       <div css={st.title}>
         <Image src={title} alt="title" fill />
       </div>

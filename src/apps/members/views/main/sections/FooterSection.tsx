@@ -6,14 +6,22 @@ import { useTranslation } from "react-i18next";
 import { Colors } from "@/common/theme";
 import arirang from "@/assets/logos/arirang.png";
 
-export const FooterSection = () => {
+type FooterSectionType = {
+  handleScrollToTop: () => void;
+};
+
+export const FooterSection = ({ handleScrollToTop }: FooterSectionType) => {
   const { t } = useTranslation("footer");
   const kocis: string = t("kocis", { returnObjects: true });
   return (
     <Stack css={st.root}>
-      <Button css={st.button}>
+      <Button css={st.button} onClick={handleScrollToTop}>
         <Stack direction="row" spacing="1.042vw">
-          <Typography fontSize={"2.083vw"} color={Colors.common.white}>
+          <Typography
+            fontSize={"2.083vw"}
+            fontWeight={400}
+            color={Colors.common.white}
+          >
             {t("top")}
           </Typography>
           <div css={st.top}>
@@ -21,6 +29,7 @@ export const FooterSection = () => {
           </div>
         </Stack>
       </Button>
+
       <div>
         <Stack direction="row" spacing="11.979vw">
           <Stack alignItems={"center"} spacing="1.875vw">

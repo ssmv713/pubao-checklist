@@ -1,0 +1,56 @@
+{
+  "title": "CONTENT RULES",
+  "items": [
+    {
+      "title": {
+        "text": "Please <span className=\"underline\">do this</span>",
+        "color": "#1C9F13"
+      },
+
+      "card": [
+        {
+          "rule": "Check if it is accurate information.",
+          "footnote": "(Fact check is a MUST! If you don't know something,\nplease send us an inquiry.)"
+        },
+        {
+          "rule": "Check if it contains sensitive\ninformation.",
+          "footnote": "(Make content that is not uncomfortable for all people)"
+        },
+        {
+          "rule": "Use your own photos & videos,\nyour own writings, or any sources\nwithout copyright issues.",
+          "footnote": "(If you are using someone else's materials, make sure\nyou identify the source.)"
+        },
+        {
+          "rule": "Creators may only submit\nworks that were solely created\nby themselves.",
+          "footnote": ""
+        }
+      ]
+    },
+    {
+      "title": {
+        "text": "This is<span className=\"underline\"> not allowed</span>",
+        "color": "#E21926"
+      },
+      "card": [
+        {
+          "rule": "No mention of sensitive topics!",
+          "footnote": "(Political/ Religious Issues, Gender/ Racist Content, etc.)"
+        },
+        {
+          "rule": "No usage of information where\nthe sources are unclear or their\nobjective facts are not guaranteed!",
+          "footnote": "(Fact check is a MUST! If you don't know something,\nplease send us an inquiry.)"
+        },
+        {
+          "rule": "No infringement of\nother people's copyrights!",
+          "footnote": "(Do not use other people's photos, videos, music sources,\ndesigns without permission)"
+        },
+        {
+          "rule": "Videos that were previously\nsubmitted to other contests will\nnot be accepted and permitted\nin this contest.",
+          "footnote": ""
+        }
+      ]
+    }
+  ],
+  "footnote": "The applicant shall be accountable for all civil and penal offenses such as copyright, portrait rights, intellectual property rights (music, video, image, illustration, font, etc.) infringement, defamation, and plagiarism. If such an infringement of rights is discovered after the award has been distributed, the award and prize money shall be revoked.",
+  "download": "Download Application"
+}

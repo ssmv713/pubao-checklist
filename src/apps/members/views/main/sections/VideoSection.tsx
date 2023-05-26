@@ -17,7 +17,7 @@ export const VideoSection = () => {
 const st = {
   root: css`
     width: 100%;
-    margin-bottom: -3px;
+    margin-bottom: -0.26vw;
   `,
   video: css`
     width: 100%;

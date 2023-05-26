@@ -6,21 +6,39 @@ import { css } from "@emotion/react";
 import { Colors } from "@/common/theme";
 import { useTranslation } from "react-i18next";
 import { SelectBox } from "../selectBox/SelectBox";
+import { useEffect, useState } from "react";
 
 const menus = ["Overview", "Prize", "Rules", "Contact Us"];
 
-export const Header = () => {
-  const { i18n } = useTranslation("landing");
+type HeaderType = {
+  scrollToSection: (menu: string) => void;
+};
+
+export const Header = ({ scrollToSection }: HeaderType) => {
+  const { t, i18n } = useTranslation("main");
   const handleLanguageChange = (event: any) => {
     const selectedLanguage = event.target.value;
     i18n.changeLanguage(selectedLanguage);
   };
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const updateScroll = () => {
+    setScrollPosition(window.scrollY || document.documentElement.scrollTop);
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", updateScroll);
+  });
+  const kocis_black: string = t("kocis_black", { returnObjects: true });
+  const kocis_white: string = t("kocis_white", { returnObjects: true });
   return (
-    <div css={st.root}>
+    <div css={[st.root, scrollPosition > 10 && st.scrollled_root]}>
       <Stack direction="row" justifyContent={"space-between"}>
         <Stack direction="row" spacing={"10px"}>
           <div css={st.kocis}>
-            <Image src={kocis} alt="kocis" fill />
+            <Image
+              src={scrollPosition > 10 ? kocis_white : kocis_black}
+              alt="kocis"
+              fill
+            />
           </div>
           <div css={st.arirang}>
             <Image src={arirang} alt="kocis" fill />
@@ -29,7 +47,7 @@ export const Header = () => {
         <Stack direction="row" alignItems={"center"}>
           <ul css={st.nav}>
             {menus.map((menu, index) => (
-              <li key={index}>
+              <li key={index} onClick={() => scrollToSection(menu)}>
                 <Typography variant="subtitle2" color={Colors.brand.primary}>
                   {menu}
                 </Typography>
@@ -37,7 +55,7 @@ export const Header = () => {
             ))}
           </ul>
           <div css={st.selectBox}>
-            <SelectBox />
+            <SelectBox scrollPosition={scrollPosition} />
           </div>
         </Stack>
       </Stack>
@@ -47,13 +65,20 @@ export const Header = () => {
 
 const st = {
   root: css`
-    background-color: rgba(0, 0, 0, 0.45);
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     padding: 1.5vw 8.333vw;
     z-index: 10;
+  `,
+  scrollled_root: css`
+    background-color: rgba(0, 0, 0, 0.45);
+    & h6,
+    p,
+    li {
+      color: #fff;
+    }
   `,
   kocis: css`
     position: relative;
@@ -68,6 +93,9 @@ const st = {
   nav: css`
     display: flex;
     gap: 4.167vw;
+    & li {
+      cursor: pointer;
+    }
   `,
   selectBox: css`
     margin-left: 4.167vw;

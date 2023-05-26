@@ -3,13 +3,18 @@ import { css } from "@emotion/react";
 import { Colors } from "@/common/theme";
 import { useTranslation } from "react-i18next";
 import { AwardsCategoryType, AwardsType } from "@/types/common.type";
+import parse from "html-react-parser";
 
-export const AwardsSection = () => {
+type AwardsSectionType = {
+  PrizeRef: React.RefObject<HTMLDivElement>;
+};
+
+export const AwardsSection = ({ PrizeRef }: AwardsSectionType) => {
   const { t } = useTranslation("awards");
   const awards: AwardsType = t("awards", { returnObjects: true });
   const category: AwardsCategoryType = t("category", { returnObjects: true });
   return (
-    <Stack css={st.root} spacing="5.208vw">
+    <Stack css={st.root} spacing="5.208vw" ref={PrizeRef}>
       <Stack direction="row">
         <Typography css={st.title} variant="h6" color={Colors.text.variant3}>
           {awards.title}
@@ -35,8 +40,12 @@ export const AwardsSection = () => {
         <Stack spacing="5.208vw" direction="row" css={st.items}>
           {category.items.map((it, index) => (
             <Stack spacing="1.563vw" key={index} css={st.item}>
-              <Typography color={Colors.text.variant5} variant="body1">
-                {it.desc}
+              <Typography
+                color={Colors.text.variant5}
+                variant="body1"
+                fontWeight={400}
+              >
+                {parse(it.desc)}
               </Typography>
               {/* 테이블 */}
               <Stack css={st.table}>
@@ -79,6 +88,9 @@ const st = {
   root: css`
     background: ${Colors.background.variant3};
     padding: 10.417vw 8.333vw;
+    & .bold {
+      font-weight: 700;
+    }
   `,
   title: css`
     width: 26.042vw;

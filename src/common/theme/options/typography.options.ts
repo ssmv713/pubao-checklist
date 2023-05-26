@@ -4,7 +4,7 @@ import { Colors } from "./colors.options";
 
 // Mui - 공통 타이포그래피 옵션
 const baseTypographyOptions: TypographyOptions = {
-  fontFamily: "Pretendard-Regular",
+  fontFamily: "Pretendard",
 
   allVariants: {
     color: Colors.text.primary,
