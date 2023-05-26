@@ -2,11 +2,14 @@ import { Colors } from "@/common/theme";
 import { css } from "@emotion/react";
 import { Stack, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
+type EmailSectionType = {
+  ContactRef: React.RefObject<HTMLDivElement>;
+};
 
-export const EmailSection = () => {
+export const EmailSection = ({ ContactRef }: EmailSectionType) => {
   const { t } = useTranslation("email");
   return (
-    <div css={st.root}>
+    <div css={st.root} ref={ContactRef}>
       <Stack css={st.inner} spacing="5.208vw">
         <Stack direction="row" spacing="3.802vw">
           <Typography

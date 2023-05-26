@@ -6,10 +6,14 @@ import { useTranslation } from "react-i18next";
 import { Colors } from "@/common/theme";
 import parse from "html-react-parser";
 
-export const ThemeSection = () => {
+type ThemeSectionType = {
+  OverviewRef: React.RefObject<HTMLDivElement>;
+};
+
+export const ThemeSection = ({ OverviewRef }: ThemeSectionType) => {
   const { t } = useTranslation("theme");
   return (
-    <Stack spacing="6.771vw" css={st.root}>
+    <Stack spacing="6.771vw" css={st.root} ref={OverviewRef}>
       <Stack spacing="2.083vw">
         <Typography fontSize={"2.917vw"} color={Colors.text.variant5}>
           {t("theme")}

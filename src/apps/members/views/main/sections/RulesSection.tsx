@@ -5,12 +5,17 @@ import { Button, Stack, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import download from "@/assets/icons/download.png";
 import Image from "next/image";
+import parse from "html-react-parser";
 
-export const RulesSection = () => {
+type RulesSectionType = {
+  RulesRef: React.RefObject<HTMLDivElement>;
+};
+
+export const RulesSection = ({ RulesRef }: RulesSectionType) => {
   const { t } = useTranslation("rules");
   const items: RulesItemsType[] = t("items", { returnObjects: true });
   return (
-    <div css={st.root}>
+    <div css={st.root} ref={RulesRef}>
       <Typography
         color={Colors.common.black}
         textAlign="center"
@@ -23,7 +28,7 @@ export const RulesSection = () => {
         {items.map((it, index) => (
           <Stack key={index} css={st.item}>
             <Typography css={st.card_title(it.title.color)}>
-              {it.title.text}
+              {parse(it.title.text)}
             </Typography>
             <Stack spacing="4.167vw" css={st.card}>
               {it.card.map((list, index) => (
@@ -40,6 +45,7 @@ export const RulesSection = () => {
                     color={Colors.common.black}
                     variant="body1"
                     fontWeight={400}
+                    textAlign="center"
                   >
                     {list.footnote}
                   </Typography>
@@ -81,9 +87,14 @@ const st = {
     padding: 10.417vw 8.333vw;
     width: 100%;
     background: #f9f9f9;
+    & .underline {
+      text-decoration: underline;
+      text-underline-position: under;
+    }
   `,
   items: css`
     width: 100%;
+    align-items: stretch;
   `,
   item: css`
     width: 100%;
@@ -105,6 +116,7 @@ const st = {
     box-shadow: 0vw 0.156vw 0.313vw rgba(0, 0, 0, 0.16);
     border-radius: 1.042vw;
     width: 100%;
+    height: 100%;
   `,
   footnote: css`
     list-style: square;
@@ -123,7 +135,7 @@ const st = {
   `,
   button: css`
     background: #000;
-    width: 18.698vw;
+    padding: 0 2.917vw;
     height: 4.792vw;
     display: flex;
     gap: 0.521vw;
