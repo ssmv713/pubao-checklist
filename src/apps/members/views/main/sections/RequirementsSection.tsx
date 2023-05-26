@@ -137,9 +137,21 @@ export const RequirementsSection = () => {
             </Stack>
           ))}
         </Stack>
-        <Typography mt="2.083vw" color={Colors.common.white} variant="body2">
-          {schedule.desc}
-        </Typography>
+        {Array.isArray(schedule.desc) ? (
+          <ul css={st.lists}>
+            {schedule.desc.map((it, index) => (
+              <li key={index}>
+                <Typography color={Colors.common.white} variant="body2">
+                  {it}
+                </Typography>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <Typography mt="2.083vw" color={Colors.common.white} variant="body2">
+            {schedule.desc}
+          </Typography>
+        )}
       </List>
     </Stack>
   );
@@ -190,6 +202,11 @@ const st = {
   `,
   deadline: css`
     width: 36.458vw;
+  `,
+  lists: css`
+    margin-top: 2.083vw;
+    list-style: disc;
+    color: white;
   `,
 };
 

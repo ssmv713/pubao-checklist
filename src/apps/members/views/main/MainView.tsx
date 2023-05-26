@@ -18,10 +18,10 @@ export const MainView = () => {
       <ThemeSection />
       <ExampleSection />
       <RequirementsSection />
-      <AwardsSection />
+      {/* <AwardsSection />
       <RulesSection />
       <EmailSection />
-      <FooterSection />
+      <FooterSection /> */}
     </>
   );
 };

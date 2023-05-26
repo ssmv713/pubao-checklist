@@ -16,34 +16,45 @@ export const Header = () => {
     i18n.changeLanguage(selectedLanguage);
   };
   return (
-    <Stack direction="row" justifyContent={"space-between"}>
-      <Stack direction="row" spacing={"10px"}>
-        <div css={st.kocis}>
-          <Image src={kocis} alt="kocis" fill />
-        </div>
-        <div css={st.arirang}>
-          <Image src={arirang} alt="kocis" fill />
-        </div>
+    <div css={st.root}>
+      <Stack direction="row" justifyContent={"space-between"}>
+        <Stack direction="row" spacing={"10px"}>
+          <div css={st.kocis}>
+            <Image src={kocis} alt="kocis" fill />
+          </div>
+          <div css={st.arirang}>
+            <Image src={arirang} alt="kocis" fill />
+          </div>
+        </Stack>
+        <Stack direction="row" alignItems={"center"}>
+          <ul css={st.nav}>
+            {menus.map((menu, index) => (
+              <li key={index}>
+                <Typography variant="subtitle2" color={Colors.brand.primary}>
+                  {menu}
+                </Typography>
+              </li>
+            ))}
+          </ul>
+          <div css={st.selectBox}>
+            <SelectBox />
+          </div>
+        </Stack>
       </Stack>
-      <Stack direction="row" alignItems={"center"}>
-        <ul css={st.nav}>
-          {menus.map((menu, index) => (
-            <li key={index}>
-              <Typography variant="subtitle2" color={Colors.brand.primary}>
-                {menu}
-              </Typography>
-            </li>
-          ))}
-        </ul>
-        <div css={st.selectBox}>
-          <SelectBox />
-        </div>
-      </Stack>
-    </Stack>
+    </div>
   );
 };
 
 const st = {
+  root: css`
+    background-color: rgba(0, 0, 0, 0.45);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5vw 8.333vw;
+    z-index: 10;
+  `,
   kocis: css`
     position: relative;
     width: 8.854vw;
