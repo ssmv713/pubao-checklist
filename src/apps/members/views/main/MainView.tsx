@@ -23,10 +23,10 @@ export const MainView = () => {
     mainRef.current?.scrollIntoView({ behavior: "smooth" });
   };
   const scrollToSection = (menu: string) => {
-    const ref = getSectionRef(menu);
+    const ref = GetSectionRef(menu);
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
-  const getSectionRef = (menu: string): React.RefObject<HTMLDivElement> => {
+  const GetSectionRef = (menu: string): React.RefObject<HTMLDivElement> => {
     switch (menu) {
       case "Overview":
         return OverviewRef;
