@@ -126,7 +126,7 @@ const st = {
       content: "*";
       font-size: 1.771vw;
       font-weight: 700;
-      padding-top: 0.468vw;
+      padding-top: 1vw;
     }
   `,
   buttonWrap: css`

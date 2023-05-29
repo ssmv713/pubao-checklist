@@ -11,6 +11,10 @@ import { css } from "@emotion/react";
 const langs = [
   { lang: "한국어", value: "ko" },
   { lang: "English", value: "en" },
+  { lang: "中國語", value: "ch" },
+  { lang: "tiếng Việt", value: "vi" },
+  { lang: "แบบไทย", value: "th" },
+  { lang: "Español", value: "sp" },
 ];
 
 type SelectBoxType = {

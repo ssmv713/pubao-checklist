@@ -1,0 +1,56 @@
+{
+  "title": "Những điều lưu ý",
+  "items": [
+    {
+      "title": {
+        "text": "Làm theo hướng dẫn",
+        "color": "#1C9F13"
+      },
+
+      "card": [
+        {
+          "rule": "Hãy xác thực thông tin",
+          "footnote": "(BẮT BUỘC kiểm tra tính xác thực của thông tin!\nNếu bạn không chắc chắn, vui lòng liên hệ với chúng tôi.)"
+        },
+        {
+          "rule": "Vui lòng đảm bảo\nkhông chứa nội dung nhạy cảm.",
+          "footnote": "(Tạo nội dung không gây khó chịu cho người khác.)"
+        },
+        {
+          "rule": "Vui lòng sử dụng ảnh và video tự chụp,\nvăn bản tự viết hoặc sử dụng các nguồn\nkhông vi phạm bản quyền.",
+          "footnote": "(Nếu sử dụng nội dung thuộc sở hữu của người khác\nvui lòng trích dẫn nguồn)"
+        },
+        {
+          "rule": "Nhà sáng tạo nội dung chỉ được gửi\ncác tác phẩm do chính mình tạo ra.",
+          "footnote": ""
+        }
+      ]
+    },
+    {
+      "title": {
+        "text": "Những điều không\nđược phép!",
+        "color": "#E21926"
+      },
+      "card": [
+        {
+          "rule": "Không đề cập đến các chủ đề nhạy cảm!",
+          "footnote": "(Các vấn đề về chính trị/tôn giáo, giới tính/\nnội dung phân biệt chủng tộc, v.v.)"
+        },
+        {
+          "rule": "Không sử dụng thông tin có nguồn\ngốc không rõ ràng hoặc không\nđảm bảo sự thật!",
+          "footnote": "(BẮT BUỘC kiểm tra tính xác thực của thông tin!\nNếu bạn không chắc chắn, vui lòng liên hệ với chúng tôi.)"
+        },
+        {
+          "rule": "Không vi phạm bản quyền!",
+          "footnote": "(Không sử dụng hình ảnh, video, nguồn nhạc,\nthiết kế của người khác khi chưa được phép)"
+        },
+        {
+          "rule": "Các video đã từng được gửi cho các\ncuộc thi khác sẽ không được chấp nhận.",
+          "footnote": ""
+        }
+      ]
+    }
+  ],
+  "footnote": "Người đăng ký dự thi phải hoàn toàn chịu trách nhiệm về tất cả các vi phạm dân sự và hình sự như vi phạm bản quyền, quyền chân dung, quyền sở hữu trí tuệ (âm nhạc, video, hình ảnh, minh họa, phông chữ, v.v.), phỉ báng và đạo văn. Nếu hành vi vi phạm quyền được phát hiện sau khi giải thưởng đã được trao, giải thưởng và tiền thưởng sẽ bị thu hồi.",
+  "download": "Tải đơn đăng ký"
+}

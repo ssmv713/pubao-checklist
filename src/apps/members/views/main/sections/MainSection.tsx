@@ -18,7 +18,7 @@ export const MainSection = ({ mainRef }: MainSectionType) => {
 
   const title: string = t("title", { returnObjects: true });
   return (
-    <Stack ref={mainRef} css={st.root} spacing="5.208vw" id="main">
+    <Stack ref={mainRef} css={st.root} id="main">
       <div css={st.movie}>
         <Image src={movie} alt="movie" fill />
       </div>
@@ -57,7 +57,7 @@ const st = {
     position: absolute;
     width: 36.25vw;
     aspect-ratio: 696 / 312;
-    top: 170px;
+    top: 8.854vw;
     right: 8.333vw;
   `,
   people: css`
@@ -67,13 +67,13 @@ const st = {
     width: 83.854vw;
     aspect-ratio: 1610 / 796;
   `,
-  header: css`
-    margin-top: 5.208vw;
-  `,
+
   title: css`
     position: relative;
     width: 34.688vw;
     height: 21.302vw;
+    margin-top: 12.5vw;
+    margin-bottom: 5.208vw;
   `,
   button: css`
     width: fit-content;

@@ -1,0 +1,49 @@
+{
+  "awards": {
+    "title": "รางวัล",
+    "desc1": "รวม 10 ผลงาน",
+    "desc2": "งินรางวัลรวม 27,000,000 วอน"
+  },
+  "category": {
+    "title": "ประเภทรางวัล",
+    "desc": "ผู้ชนะรวม (รางวัลใหญ่) : 6,000,000 วอน ต่อ 1 ผลงาน",
+    "items": [
+      {
+        "desc": "<span className=\"bold\">Nhà sáng tạo nội dung</span>\n7 triệu won / 5 video",
+        "table": {
+          "header": ["Giải Thưởng", "Tiền Thưởng", "Số Lượng Tác Phẩm"],
+          "content": [
+            { "title": "Vàng", "award": "3,000,000 won", "amount": "1 Video" },
+            { "title": "Bạc", "award": "2,000,000 won", "amount": "1 Video" },
+            { "title": "Đồng", "award": "1,000,000 won", "amount": "1 Video" },
+            {
+              "title": "Giải Phổ Biến",
+              "award": "500,000 won",
+              "amount": "2 Videos"
+            }
+          ]
+        }
+      },
+      {
+        "desc": "<span className=\"bold\">Nhà sáng tạo chuyên nghiệp</span>\n14 triệu won / 4 tác phẩm",
+        "table": {
+          "header": ["구분", "상금", "작품개수"],
+          "content": [
+            { "title": "Vàng", "award": "5,000,000 won", "amount": "1 Video" },
+            { "title": "Bạc", "award": "4,000,000 won", "amount": "1 Video" },
+            { "title": "Đồng", "award": "3,000,000 won", "amount": "1 Video" },
+            {
+              "title": "Giải Phổ Biến",
+              "award": "2,000,000 won",
+              "amount": "1 Video"
+            }
+          ]
+        }
+      }
+    ],
+    "footnote": [
+      "* Giải thưởng sẽ không được trao nếu không có ứng viên nào đáp ứng được các tiêu chí sàng lọc",
+      "* Thuế và lệ phí do người đạt giải chịu"
+    ]
+  }
+}

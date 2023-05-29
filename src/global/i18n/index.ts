@@ -2,6 +2,10 @@ import i18n, { Resource } from "i18next";
 import { initReactI18next } from "react-i18next";
 import * as en from "./en";
 import * as ko from "./ko";
+import * as ch from "./ch";
+import * as vi from "./vi";
+import * as th from "./th";
+import * as sp from "./sp";
 
 const resources: Resource = {
   en: {
@@ -9,6 +13,18 @@ const resources: Resource = {
   },
   ko: {
     ...ko,
+  },
+  ch: {
+    ...ch,
+  },
+  vi: {
+    ...vi,
+  },
+  th: {
+    ...th,
+  },
+  sp: {
+    ...sp,
   },
 };
 
