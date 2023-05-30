@@ -22,24 +22,13 @@ export const MainView = () => {
   const handleScrollToTop = () => {
     mainRef.current?.scrollIntoView({ behavior: "smooth" });
   };
-  const scrollToSection = (menu: string) => {
-    const ref = GetSectionRef(menu);
-    ref.current?.scrollIntoView({ behavior: "smooth" });
+
+  const refArr = [OverviewRef, PrizeRef, RulesRef, ContactRef];
+
+  const scrollToSection = (index: number) => {
+    refArr[index].current?.scrollIntoView({ behavior: "smooth" });
   };
-  const GetSectionRef = (menu: string): React.RefObject<HTMLDivElement> => {
-    switch (menu) {
-      case "Overview":
-        return OverviewRef;
-      case "Prize":
-        return PrizeRef;
-      case "Rules":
-        return RulesRef;
-      case "Contact Us":
-        return ContactRef;
-      default:
-        return useRef<HTMLDivElement>(null);
-    }
-  };
+
   return (
     <>
       <Header scrollToSection={scrollToSection} />

@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 const menus = ["Overview", "Prize", "Rules", "Contact Us"];
 
 type HeaderType = {
-  scrollToSection: (menu: string) => void;
+  scrollToSection: (index: number) => void;
 };
 
 export const Header = ({ scrollToSection }: HeaderType) => {
@@ -47,7 +47,7 @@ export const Header = ({ scrollToSection }: HeaderType) => {
         <Stack direction="row" alignItems={"center"}>
           <ul css={st.nav}>
             {menus.map((menu, index) => (
-              <li key={index} onClick={() => scrollToSection(menu)}>
+              <li key={index} onClick={() => scrollToSection(index)}>
                 <Typography variant="subtitle2" color={Colors.brand.primary}>
                   {menu}
                 </Typography>
