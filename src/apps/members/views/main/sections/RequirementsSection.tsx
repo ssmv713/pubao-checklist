@@ -9,7 +9,7 @@ import {
   ScheduleType,
   SelectType,
 } from "@/types/common.type";
-import { Colors } from "@/common/theme";
+import { Colors, Mq, useCustomMediaQuery } from "@/common/theme";
 
 export const RequirementsSection = () => {
   const { t } = useTranslation("requirements");
@@ -28,6 +28,7 @@ export const RequirementsSection = () => {
   const schedule: ScheduleType = t("schedule", {
     returnObjects: true,
   });
+  const { isMedium } = useCustomMediaQuery();
   return (
     <Stack css={st.root} spacing="5.208vw">
       <List title={eligibility.title}>
@@ -38,6 +39,7 @@ export const RequirementsSection = () => {
                 variant="subtitle2"
                 color={Colors.text.variant6}
                 fontWeight={400}
+                css={st.px14}
               >
                 {it}
               </Typography>
@@ -65,7 +67,11 @@ export const RequirementsSection = () => {
       </List>
       <List title={requirements.title}>
         <div>
-          <Typography variant="subtitle2" color={Colors.text.variant6}>
+          <Typography
+            css={st.px14}
+            variant="subtitle2"
+            color={Colors.text.variant6}
+          >
             {requirements.desc}
           </Typography>
           <Stack css={st.table}>
@@ -76,6 +82,7 @@ export const RequirementsSection = () => {
                     color={Colors.background.variant2}
                     variant="subtitle2"
                     fontWeight={700}
+                    css={st.px12}
                   >
                     {it.title}
                   </Typography>
@@ -87,6 +94,7 @@ export const RequirementsSection = () => {
                         key={idx}
                         color={Colors.background.variant2}
                         variant="subtitle2"
+                        css={st.px12}
                       >
                         {descItem}
                       </Typography>
@@ -95,6 +103,7 @@ export const RequirementsSection = () => {
                     <Typography
                       color={Colors.background.variant2}
                       variant="subtitle2"
+                      css={st.px12}
                     >
                       {it.desc}
                     </Typography>
@@ -109,7 +118,11 @@ export const RequirementsSection = () => {
         <Typography variant="h5" color={Colors.text.variant6}>
           {select.desc1}
         </Typography>
-        <Typography variant="subtitle2" color={Colors.text.variant6}>
+        <Typography
+          css={st.select_desc2}
+          variant="subtitle2"
+          color={Colors.text.variant6}
+        >
           {select.desc2}
         </Typography>
       </List>
@@ -148,7 +161,11 @@ export const RequirementsSection = () => {
             ))}
           </ul>
         ) : (
-          <Typography mt="2.083vw" color={Colors.common.white} variant="body2">
+          <Typography
+            mt={isMedium ? "4.884vw" : "2.083vw"}
+            color={Colors.common.white}
+            variant="body2"
+          >
             {schedule.desc}
           </Typography>
         )}
@@ -160,13 +177,22 @@ export const RequirementsSection = () => {
 const st = {
   root: css`
     background: #ff6a00;
-    padding: 10.417vw 8.333vw;
+    padding: 12.791vw 8.372vw;
   `,
-  list_title: css`
-    width: 26.042vw;
+  px14: css`
+    @media ${Mq.md} {
+      font-size: 3.256vw;
+    }
   `,
-  list_item: css`
-    flex: 1;
+  px13: css`
+    @media ${Mq.md} {
+      font-size: 3.023vw;
+    }
+  `,
+  px12: css`
+    @media ${Mq.md} {
+      font-size: 2.791vw;
+    }
   `,
   category_item: css`
     width: 100%;
@@ -177,6 +203,9 @@ const st = {
   table: css`
     gap: 0.208vw;
     width: 100%;
+    @media ${Mq.md} {
+      margin-top: 3.953vw;
+    }
   `,
   table_row: css`
     display: flex;
@@ -192,6 +221,11 @@ const st = {
     flex: 1;
     padding: 0.833vw 1.302vw;
   `,
+  select_desc2: css`
+    @media ${Mq.md} {
+      font-size: 2.791vw !important;
+    }
+  `,
   schedule: css`
     flex: 1;
   `,
@@ -199,14 +233,34 @@ const st = {
     text-decoration: underline;
     text-underline-position: under;
     text-decoration-thickness: 0.104vw;
+    @media ${Mq.md} {
+      font-size: 3.023vw;
+      text-decoration: none;
+    }
   `,
   deadline: css`
     width: 36.458vw;
+    @media ${Mq.md} {
+      font-size: 3.023vw;
+    }
   `,
   lists: css`
     margin-top: 2.083vw;
     list-style: disc;
     color: white;
+  `,
+  list_title: css`
+    width: 26.042vw;
+    @media ${Mq.md} {
+      text-decoration: underline;
+      text-underline-position: under;
+      text-decoration-thickness: 3px;
+      width: fit-content;
+      margin-bottom: 3.953vw;
+    }
+  `,
+  list_item: css`
+    flex: 1;
   `,
 };
 
@@ -215,8 +269,9 @@ type ListType = {
   children: ReactNode;
 };
 const List = ({ children, title }: ListType) => {
+  const { isMedium } = useCustomMediaQuery();
   return (
-    <Stack direction="row">
+    <Stack direction={isMedium ? "column" : "row"}>
       <Typography css={st.list_title} variant="h6" color={Colors.common.black}>
         {title}
       </Typography>

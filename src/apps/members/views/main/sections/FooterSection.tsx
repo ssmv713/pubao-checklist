@@ -3,7 +3,7 @@ import { Button, Link, Stack, Typography } from "@mui/material";
 import top from "@/assets/icons/top.png";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
-import { Colors } from "@/common/theme";
+import { Colors, Mq, useCustomMediaQuery } from "@/common/theme";
 import arirang from "@/assets/logos/arirang.png";
 
 type FooterSectionType = {
@@ -13,12 +13,13 @@ type FooterSectionType = {
 export const FooterSection = ({ handleScrollToTop }: FooterSectionType) => {
   const { t } = useTranslation("footer");
   const kocis: string = t("kocis", { returnObjects: true });
+  const { isMedium } = useCustomMediaQuery();
   return (
     <Stack css={st.root}>
       <Button css={st.button} onClick={handleScrollToTop}>
         <Stack direction="row" spacing="1.042vw">
           <Typography
-            fontSize={"2.083vw"}
+            fontSize={isMedium ? "2.791vw" : "2.083vw"}
             fontWeight={400}
             color={Colors.common.white}
           >
@@ -87,10 +88,16 @@ const st = {
     position: relative;
     width: 19.323vw;
     aspect-ratio: 371 / 97;
+    @media ${Mq.md} {
+      width: 24.651vw;
+    }
   `,
   arirang: css`
     position: relative;
     width: 15.521vw;
     aspect-ratio: 298 / 78;
+    @media ${Mq.md} {
+      width: 19.767vw;
+    }
   `,
 };

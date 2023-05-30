@@ -5,12 +5,12 @@ import { BreakpointsOptions } from "@mui/material";
  * 반응형 기준
  */
 export enum ScreenType {
-  xs = 376, // 최소 지원 디바이스 가로 길이
-  sm = 576, // Mobile
-  md = 768, // Medium Size Mobile
-  lg = 1024, // Tablet
-  xl = 1200, // Laptop
-  xxl = 1440, // Large Laptop
+  xs = 376, // isExtraSmall
+  sm = 576, // isSmall
+  md = 768, // isMedium
+  lg = 1024, // isLarge
+  xl = 1200, // isTablet
+  xxl = 1440, // isLaptop
 }
 
 /**

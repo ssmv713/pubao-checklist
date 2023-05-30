@@ -1,6 +1,6 @@
 import { Stack, Typography } from "@mui/material";
 import { css } from "@emotion/react";
-import { Colors } from "@/common/theme";
+import { Colors, Mq, useCustomMediaQuery } from "@/common/theme";
 import { useTranslation } from "react-i18next";
 import { AwardsCategoryType, AwardsType } from "@/types/common.type";
 import parse from "html-react-parser";
@@ -13,33 +13,52 @@ export const AwardsSection = ({ PrizeRef }: AwardsSectionType) => {
   const { t } = useTranslation("awards");
   const awards: AwardsType = t("awards", { returnObjects: true });
   const category: AwardsCategoryType = t("category", { returnObjects: true });
+  const { isMedium } = useCustomMediaQuery();
+
   return (
-    <Stack css={st.root} spacing="5.208vw" ref={PrizeRef}>
-      <Stack direction="row">
+    <Stack
+      css={st.root}
+      spacing={isMedium ? "12.093vw" : "5.208vw"}
+      ref={PrizeRef}
+      id="Prize"
+    >
+      <Stack direction={isMedium ? "column" : "row"}>
         <Typography css={st.title} variant="h6" color={Colors.text.variant3}>
           {awards.title}
         </Typography>
         <div>
-          <Typography color={Colors.text.variant5} variant="subtitle2">
+          <Typography
+            css={st.px16}
+            color={Colors.text.variant5}
+            variant="subtitle2"
+          >
             {awards.desc1}
           </Typography>
-          <Typography color={Colors.text.variant5} variant="h5">
+          <Typography css={st.px22} color={Colors.text.variant5} variant="h5">
             {awards.desc2}
           </Typography>
         </div>
       </Stack>
-      <Stack direction="row">
+      <Stack direction={isMedium ? "column" : "row"}>
         <Typography css={st.title} variant="h6" color={Colors.text.variant3}>
           {category.title}
         </Typography>
-        <Typography color={Colors.text.variant5} variant="subtitle2">
+        <Typography
+          css={st.px16}
+          color={Colors.text.variant5}
+          variant="subtitle2"
+        >
           {category.desc}
         </Typography>
       </Stack>
       <div>
-        <Stack spacing="5.208vw" direction="row" css={st.items}>
+        <Stack
+          direction={isMedium ? "column" : "row"}
+          spacing={isMedium ? "11.163vw" : "5.208vw"}
+          css={st.items}
+        >
           {category.items.map((it, index) => (
-            <Stack spacing="1.563vw" key={index} css={st.item}>
+            <Stack spacing={"1.563vw"} key={index} css={st.item}>
               <Typography
                 color={Colors.text.variant5}
                 variant="body1"
@@ -92,8 +111,21 @@ const st = {
       font-weight: 700;
     }
   `,
+  px16: css`
+    @media ${Mq.md} {
+      font-size: 3.721vw;
+    }
+  `,
+  px22: css`
+    @media ${Mq.md} {
+      font-size: 5.116vw;
+    }
+  `,
   title: css`
     width: 26.042vw;
+    @media ${Mq.md} {
+      margin-bottom: 4.651vw;
+    }
   `,
   items: css`
     width: 100%;

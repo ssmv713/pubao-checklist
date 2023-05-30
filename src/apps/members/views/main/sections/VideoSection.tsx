@@ -1,7 +1,6 @@
-import { localeState } from "@/global/recoil/locale.atom";
+import { Mq } from "@/common/theme";
 import { css } from "@emotion/react";
 import { useTranslation } from "react-i18next";
-import { useRecoilState } from "recoil";
 
 export const VideoSection = () => {
   const { i18n } = useTranslation();
@@ -27,6 +26,9 @@ const st = {
   root: css`
     width: 100%;
     margin-bottom: -0.26vw;
+    @media ${Mq.md} {
+      margin-bottom: -0.465vw;
+    }
   `,
   video: css`
     width: 100%;

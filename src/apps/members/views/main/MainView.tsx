@@ -1,5 +1,6 @@
+import { useCustomMediaQuery } from "@/common/theme";
 import { useRef } from "react";
-import { Header } from "../../components/header";
+import { Header, MobileHeader } from "../../components/header";
 import {
   AwardsSection,
   EmailSection,
@@ -11,6 +12,7 @@ import {
   ThemeSection,
   VideoSection,
 } from "./sections";
+import { MobileMainSection } from "./sections/mobile";
 
 export const MainView = () => {
   const mainRef = useRef<HTMLDivElement>(null);
@@ -28,11 +30,19 @@ export const MainView = () => {
   const scrollToSection = (index: number) => {
     refArr[index].current?.scrollIntoView({ behavior: "smooth" });
   };
-
+  const { isMedium } = useCustomMediaQuery();
   return (
     <>
-      <Header scrollToSection={scrollToSection} />
-      <MainSection mainRef={mainRef} />
+      {isMedium ? (
+        <MobileHeader scrollToSection={scrollToSection} />
+      ) : (
+        <Header scrollToSection={scrollToSection} />
+      )}
+      {isMedium ? (
+        <MobileMainSection mainRef={mainRef} />
+      ) : (
+        <MainSection mainRef={mainRef} />
+      )}
       <VideoSection />
       <ThemeSection OverviewRef={OverviewRef} />
       <ExampleSection />

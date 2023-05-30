@@ -5,7 +5,7 @@ import white_arrow from "@/assets/icons/white_arrow_down.png";
 import { Stack, Typography } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { Colors } from "@/common/theme";
+import { Colors, Mq } from "@/common/theme";
 import { css } from "@emotion/react";
 
 const langs = [
@@ -37,7 +37,7 @@ export const SelectBox = ({ scrollPosition }: SelectBoxType) => {
     setIsOpen(false);
     handleLanguageChange(value);
   };
-  const selectBoxRef =useRef<HTMLDivElement | null>(null);
+  const selectBoxRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
@@ -96,8 +96,15 @@ const st = {
   selectBox: css`
     position: relative;
     height: 1.771vw;
-    width: 95.002px;
+    width: 6.208vw;
     cursor: pointer;
+    @media ${Mq.md} {
+      width: fit-content;
+      & p {
+        font-size: 3.651vw;
+      }
+      margin-right: 15px;
+    }
   `,
   lists: css`
     position: absolute;

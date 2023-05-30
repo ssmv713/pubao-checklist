@@ -1,6 +1,7 @@
 import { Colors } from "@/common/theme";
 import { css } from "@emotion/react";
 import { Stack, Typography } from "@mui/material";
+import Link from "next/link";
 import { useTranslation } from "react-i18next";
 type EmailSectionType = {
   ContactRef: React.RefObject<HTMLDivElement>;
@@ -9,7 +10,7 @@ type EmailSectionType = {
 export const EmailSection = ({ ContactRef }: EmailSectionType) => {
   const { t } = useTranslation("email");
   return (
-    <div css={st.root} ref={ContactRef}>
+    <div css={st.root} ref={ContactRef} id="Contact Us">
       <Stack css={st.inner} spacing="5.208vw">
         <Stack direction="row" spacing="3.802vw">
           <Typography
@@ -20,13 +21,15 @@ export const EmailSection = ({ ContactRef }: EmailSectionType) => {
           >
             {t("send")}
           </Typography>
-          <Typography
-            color={Colors.common.white}
-            fontSize="2.917vw"
-            fontWeight={700}
-          >
-            {"contest@lbizkorea.co.kr"}
-          </Typography>
+          <Link href="mailto: contest@lbizkorea.co.kr" target="_blank">
+            <Typography
+              color={Colors.common.white}
+              fontSize="2.917vw"
+              fontWeight={700}
+            >
+              {"contest@lbizkorea.co.kr"}
+            </Typography>
+          </Link>
         </Stack>
         <Stack direction="row" spacing="3.802vw">
           <Typography
@@ -37,13 +40,15 @@ export const EmailSection = ({ ContactRef }: EmailSectionType) => {
           >
             {t("inquiry")}
           </Typography>
-          <Typography
-            color={Colors.common.white}
-            fontSize="2.917vw"
-            fontWeight={700}
-          >
-            {"support@lbizkorea.co.kr"}
-          </Typography>
+          <Link href="mailto: support@lbizkorea.co.kr" target="_blank">
+            <Typography
+              color={Colors.common.white}
+              fontSize="2.917vw"
+              fontWeight={700}
+            >
+              {"support@lbizkorea.co.kr"}
+            </Typography>
+          </Link>
         </Stack>
       </Stack>
     </div>
@@ -53,6 +58,7 @@ export const EmailSection = ({ ContactRef }: EmailSectionType) => {
 const st = {
   root: css`
     background-image: url(/assets/images/email_bg.png);
+    background-size: cover;
     width: 100%;
     aspect-ratio: 1920 / 1218;
     display: flex;

@@ -1,4 +1,4 @@
-import { Colors } from "@/common/theme";
+import { Colors, Mq, useCustomMediaQuery } from "@/common/theme";
 import { RulesItemsType } from "@/types/common.type";
 import { css } from "@emotion/react";
 import { Button, Stack, Typography } from "@mui/material";
@@ -14,17 +14,22 @@ type RulesSectionType = {
 export const RulesSection = ({ RulesRef }: RulesSectionType) => {
   const { t } = useTranslation("rules");
   const items: RulesItemsType[] = t("items", { returnObjects: true });
+  const { isMedium } = useCustomMediaQuery();
   return (
-    <div css={st.root} ref={RulesRef}>
+    <div css={st.root} ref={RulesRef} id="Rules">
       <Typography
         color={Colors.common.black}
         textAlign="center"
-        fontSize="2.917vw"
+        fontSize={isMedium ? "6.512vw !important" : "2.917vw"}
         mb="2.719vw"
       >
         {t("title")}
       </Typography>
-      <Stack direction="row" spacing={"2.083vw"} css={st.items}>
+      <Stack
+        direction={isMedium ? "column" : "row"}
+        spacing={"2.083vw"}
+        css={st.items}
+      >
         {items.map((it, index) => (
           <Stack key={index} css={st.item}>
             <Typography css={st.card_title(it.title.color)}>
@@ -46,6 +51,7 @@ export const RulesSection = ({ RulesRef }: RulesSectionType) => {
                     variant="body1"
                     fontWeight={400}
                     textAlign="center"
+                    css={st.px12}
                   >
                     {list.footnote}
                   </Typography>
@@ -60,6 +66,7 @@ export const RulesSection = ({ RulesRef }: RulesSectionType) => {
           pl="0.833vw"
           color={Colors.common.black}
           variant="subtitle1"
+          css={st.px10}
         >
           {t("footnote")}
         </Typography>
@@ -92,6 +99,17 @@ const st = {
       text-underline-position: under;
     }
   `,
+  px12: css`
+    @media ${Mq.md} {
+      font-size: 2.791vw;
+    }
+  `,
+  px10: css`
+    @media ${Mq.md} {
+      font-size: 2.326vw;
+      text-align: center;
+    }
+  `,
   items: css`
     width: 100%;
     align-items: stretch;
@@ -114,6 +132,11 @@ const st = {
     text-align: center;
     border-radius: 5.208vw;
     transform: translateY(4vw);
+    @media ${Mq.md} {
+      font-size: 4.651vw;
+      padding: 3.256vw 5.116vw;
+      height: auto;
+    }
   `,
   card: css`
     padding: 7.292vw 0;
@@ -123,6 +146,9 @@ const st = {
     width: 100%;
     height: 100%;
     justify-content: space-between;
+    @media ${Mq.md} {
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    }
   `,
   footnote: css`
     list-style: square;
@@ -149,10 +175,19 @@ const st = {
     &:hover {
       background: #000;
     }
+    @media ${Mq.md} {
+      padding: 2.721vw 4.651vw;
+      height: auto;
+      border-radius: 1.395vw;
+    }
   `,
   download: css`
     position: relative;
     width: 1.875vw;
     height: 1.875vw;
+    @media ${Mq.md} {
+      width: 4.651vw;
+      height: 4.651vw;
+    }
   `,
 };
