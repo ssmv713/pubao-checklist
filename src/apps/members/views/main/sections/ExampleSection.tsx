@@ -6,22 +6,11 @@ import parse from "html-react-parser";
 import { ExampleType } from "@/types/common.type";
 import dots from "@/assets/images/dots.png";
 import Image from "next/dist/client/image";
-import {
-  isChinese,
-  isEnglish,
-  isKorean,
-} from "@/common/theme/options/language.options";
 
 export const ExampleSection = () => {
   const { t } = useTranslation("example");
   const yellow: ExampleType = t("yellow", { returnObjects: true });
   const green: ExampleType = t("green", { returnObjects: true });
-
-  const isLongTexts = {
-    ko: isKorean(),
-    en: isEnglish(),
-    ch: isChinese(),
-  };
 
   return (
     <Stack spacing="5.208vw" css={st.root}>
@@ -41,7 +30,7 @@ export const ExampleSection = () => {
           {t("desc")}
         </Typography>
       </div>
-      <Stack spacing={isLongTexts ? "9vw" : "4.021vw"}>
+      <Stack spacing={"9vw"}>
         <Stack css={st.yellowBox}>
           <Typography
             fontSize={"3.125vw"}
