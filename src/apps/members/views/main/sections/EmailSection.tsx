@@ -65,11 +65,12 @@ const st = {
     padding: 6.25vw;
   `,
   title: css`
-    width: 18.958vw;
-    padding: 0.677vw 0;
+    min-width: 18.958vw;
+    padding: 0.677vw 1.5vw;
     text-align: center;
     background: #010f21;
     box-shadow: 0px 6px 6px rgba(241, 241, 241, 0.15);
     border-radius: 5.208vw;
+    flex: 1;
   `,
 };

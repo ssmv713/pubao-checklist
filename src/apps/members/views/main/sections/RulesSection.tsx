@@ -102,8 +102,13 @@ const st = {
   `,
   card_title: (bgColor: string) => css`
     background: ${bgColor};
-    width: 30.208vw;
-    padding: 1.875vw 0;
+    min-width: 30.208vw;
+    height: 7.396vw;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.875vw 1.5vw;
     color: #fff;
     font-size: 2.604vw;
     text-align: center;
@@ -117,6 +122,7 @@ const st = {
     border-radius: 1.042vw;
     width: 100%;
     height: 100%;
+    justify-content: space-between;
   `,
   footnote: css`
     list-style: square;

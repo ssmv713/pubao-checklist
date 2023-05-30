@@ -6,11 +6,22 @@ import parse from "html-react-parser";
 import { ExampleType } from "@/types/common.type";
 import dots from "@/assets/images/dots.png";
 import Image from "next/dist/client/image";
+import {
+  isChinese,
+  isEnglish,
+  isKorean,
+} from "@/common/theme/options/language.options";
 
 export const ExampleSection = () => {
   const { t } = useTranslation("example");
   const yellow: ExampleType = t("yellow", { returnObjects: true });
   const green: ExampleType = t("green", { returnObjects: true });
+
+  const isLongTexts = {
+    ko: isKorean(),
+    en: isEnglish(),
+    ch: isChinese(),
+  };
 
   return (
     <Stack spacing="5.208vw" css={st.root}>
@@ -22,16 +33,21 @@ export const ExampleSection = () => {
         >
           {parse(t("example"))}
         </Typography>
-        <Typography fontSize={"2.292vw"} color={Colors.text.variant4}>
+        <Typography
+          fontWeight={400}
+          fontSize={"2.292vw"}
+          color={Colors.text.variant4}
+        >
           {t("desc")}
         </Typography>
       </div>
-      <Stack spacing={"4.021vw"}>
+      <Stack spacing={isLongTexts ? "9vw" : "4.021vw"}>
         <Stack css={st.yellowBox}>
           <Typography
             fontSize={"3.125vw"}
             color={Colors.common.black}
             fontWeight={700}
+            textAlign="center"
           >
             {yellow.title}
           </Typography>
@@ -63,6 +79,7 @@ export const ExampleSection = () => {
               fontSize={"3.125vw"}
               color={Colors.common.black}
               fontWeight={700}
+              textAlign="center"
             >
               {t("blue")}
             </Typography>
@@ -95,13 +112,13 @@ const st = {
     background: ${Colors.text.variant1};
   `,
   example: css`
-    & span {v
+    & span {
       font-weight: 700;
     }
   `,
   yellowBox: css`
-    padding: 0 3.021vw;
-    height: 10vw;
+    padding: 2vw 3.021vw;
+    /* height: 10vw; */
     background: ${Colors.brand.yellow};
     width: fit-content;
     border-radius: 10.417vw;
@@ -126,8 +143,8 @@ const st = {
   `,
   blueWrap: css``,
   blueBox: css`
-    padding: 0 3.021vw;
-    height: 6.875vw;
+    padding: 1.406vw 3.021vw;
+    /* height: 6.875vw; */
     background: ${Colors.brand.mint};
     width: fit-content;
     border-radius: 10.417vw;

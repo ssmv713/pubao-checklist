@@ -75,8 +75,7 @@ const st = {
   scrollled_root: css`
     background-color: rgba(0, 0, 0, 0.45);
     & h6,
-    p,
-    li {
+    p {
       color: #fff;
     }
   `,

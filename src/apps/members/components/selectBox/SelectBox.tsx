@@ -3,7 +3,7 @@ import purple_arrow from "@/assets/icons/purple_arrow_down.png";
 import white_arrow from "@/assets/icons/white_arrow_down.png";
 
 import { Stack, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Colors } from "@/common/theme";
 import { css } from "@emotion/react";
@@ -30,16 +30,34 @@ export const SelectBox = ({ scrollPosition }: SelectBoxType) => {
   const [selectedLang, setSelectedLang] = useState("한국어");
   const [isOpen, setIsOpen] = useState(false);
   const toggleDropdown = () => {
-    setIsOpen(true);
+    setIsOpen(!isOpen);
   };
   const handleClick = (lang: string, value: string) => {
     setSelectedLang(lang);
     setIsOpen(false);
     handleLanguageChange(value);
   };
+  const selectBoxRef =useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (
+        selectBoxRef.current &&
+        !selectBoxRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
   return (
     <>
-      <div css={st.selectBox}>
+      <div css={st.selectBox} ref={selectBoxRef}>
         <Stack
           onClick={toggleDropdown}
           direction="row"
@@ -60,7 +78,7 @@ export const SelectBox = ({ scrollPosition }: SelectBoxType) => {
           <ul css={st.lists}>
             {langs.map((it, index) => (
               <li
-                css={st.lang}
+                css={st.lang(it.lang == selectedLang)}
                 key={index}
                 onClick={() => handleClick(it.lang, it.value)}
               >
@@ -83,12 +101,24 @@ const st = {
   `,
   lists: css`
     position: absolute;
-    top: 1.771vw;
-    left: 0;
+    top: 2vw;
+    left: -1.3vw;
+    border-radius: 0.781vw;
     cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    background: #fff;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+      0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
   `,
-  lang: css`
-    color: ${Colors.brand.primary};
-    margin-top: 0.625vw;
+  lang: (isSelected: boolean) => css`
+    color: ${Colors.text.variant1};
+    padding: 0.8vw 1.2vw;
+    &:hover {
+      background: rgba(95, 0, 145, 0.09);
+    }
+    background: ${isSelected ? "rgba(95, 0, 145, 0.09)" : ""};
   `,
 };

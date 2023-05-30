@@ -73,8 +73,8 @@ const st = {
     justify-content: space-between;
   `,
   button: css`
-    width: 19.896vw;
-    padding: 2.604vw 0;
+    min-width: 19.896vw;
+    padding: 2.604vw 1.5vw;
     border: 0.208vw solid #ffffff;
     border-radius: 5.208vw;
   `,

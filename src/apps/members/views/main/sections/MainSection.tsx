@@ -15,7 +15,29 @@ type MainSectionType = {
 
 export const MainSection = ({ mainRef }: MainSectionType) => {
   const { t, i18n } = useTranslation("main");
+  let imageWidth: string;
+  let imageHeight: string;
+  const currentLanguage = i18n.language;
 
+  if (currentLanguage === "en") {
+    imageWidth = "40.885vw";
+    imageHeight = "19.896vw";
+  } else if (currentLanguage === "ch") {
+    imageWidth = "32.24vw";
+    imageHeight = "21.615vw";
+  } else if (currentLanguage === "vi") {
+    imageWidth = "38.229vw";
+    imageHeight = "24.167vw";
+  } else if (currentLanguage === "th") {
+    imageWidth = "43.177vw";
+    imageHeight = "20.729vw";
+  } else if (currentLanguage === "sp") {
+    imageWidth = "42.5vw";
+    imageHeight = "23.073vw";
+  } else {
+    imageWidth = "34.688vw";
+    imageHeight = "21.302vw"; // 기본 값 설정
+  }
   const title: string = t("title", { returnObjects: true });
   return (
     <Stack ref={mainRef} css={st.root} id="main">
@@ -26,7 +48,7 @@ export const MainSection = ({ mainRef }: MainSectionType) => {
         <Image src={people} alt="people " fill />
       </div>
 
-      <div css={st.title}>
+      <div css={st.title(imageWidth, imageHeight)}>
         <Image src={title} alt="title" fill />
       </div>
       <Button css={st.button}>
@@ -68,21 +90,25 @@ const st = {
     aspect-ratio: 1610 / 796;
   `,
 
-  title: css`
+  title: (imageWidth: string, imageHeight: string) => css`
     position: relative;
-    width: 34.688vw;
-    height: 21.302vw;
+    /* width: 34.688vw;
+    height: 21.302vw; */
+    width: ${imageWidth};
+    height: ${imageHeight};
     margin-top: 12.5vw;
     margin-bottom: 5.208vw;
   `,
   button: css`
     width: fit-content;
-    padding: 0 3.281vw;
+    padding: 1.458vw 3.281vw;
 
-    height: 4.792vw;
     background: ${Colors.brand.primary};
     &:hover {
       background: ${Colors.brand.primary};
+    }
+    & h6 {
+      text-align: left;
     }
   `,
   download: css`
