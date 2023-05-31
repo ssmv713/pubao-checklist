@@ -103,7 +103,7 @@ const st = {
   selectBox: css`
     position: relative;
     height: 1.771vw;
-    width: 6.208vw;
+    min-width: 6.208vw;
     cursor: pointer;
     @media ${Mq.md} {
       width: fit-content;
