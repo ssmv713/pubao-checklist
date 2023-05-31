@@ -36,7 +36,8 @@ export const MobileHeader = ({ scrollToSection }: HeaderType) => {
   const handleClose = () => {
     setOpen(false);
   };
-  const { isMedium } = useCustomMediaQuery();
+
+  const [selectedLang, setSelectedLang] = useState("한국어");
   return (
     <div css={[st.root, scrollPosition > 10 && st.scrollled_root]}>
       <Dialog onClose={handleClose} open={open} fullScreen>
@@ -60,7 +61,10 @@ export const MobileHeader = ({ scrollToSection }: HeaderType) => {
               </Link>
             ))}
           </ul>
-          <MobileSelectBox scrollPosition={scrollPosition} />
+          <MobileSelectBox
+            setSelectedLang={setSelectedLang}
+            selectedLang={selectedLang}
+          />
         </div>
       </Dialog>
 

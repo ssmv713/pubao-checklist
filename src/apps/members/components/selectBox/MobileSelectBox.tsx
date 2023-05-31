@@ -17,17 +17,19 @@ const langs = [
   { lang: "Español", value: "sp" },
 ];
 
-type SelectBoxType = {
-  scrollPosition: number;
+type MobileSelectBoxType = {
+  setSelectedLang: (lang: string) => void;
+  selectedLang: string;
 };
-
-export const MobileSelectBox = ({ scrollPosition }: SelectBoxType) => {
+export const MobileSelectBox = ({
+  setSelectedLang,
+  selectedLang,
+}: MobileSelectBoxType) => {
   const { i18n } = useTranslation("landing");
   const handleLanguageChange = (language: string) => {
     i18n.changeLanguage(language);
   };
 
-  const [selectedLang, setSelectedLang] = useState("한국어");
   const [isOpen, setIsOpen] = useState(false);
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -68,18 +70,12 @@ export const MobileSelectBox = ({ scrollPosition }: SelectBoxType) => {
           <Typography
             mr="2.326vw"
             fontSize={"7.442vw !important"}
-            color={
-              scrollPosition > 10 ? Colors.common.white : Colors.brand.primary
-            }
+            color={Colors.brand.primary}
           >
             {selectedLang}
           </Typography>
           <div css={st.arrow}>
-            <Image
-              src={scrollPosition > 10 ? white_arrow : purple_arrow}
-              alt="arrow"
-              fill
-            />
+            <Image src={purple_arrow} alt="arrow" fill />
           </div>
         </Stack>
         {isOpen && (
