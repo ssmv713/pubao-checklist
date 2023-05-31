@@ -11,15 +11,24 @@ type ThemeSectionType = {
 };
 
 export const ThemeSection = ({ OverviewRef }: ThemeSectionType) => {
-  const { t } = useTranslation("theme");
+  const { t, i18n } = useTranslation("theme");
   const { isMedium } = useCustomMediaQuery();
+  const isSmallerFont =
+    i18n.language === "vi" ||
+    i18n.language === "th" ||
+    i18n.language === "sp" ||
+    i18n.language === "en";
   return (
     <Stack spacing="6.771vw" css={st.root} ref={OverviewRef} id="Overview">
       <Stack spacing="2.083vw">
         <Typography fontSize={"2.917vw"} color={Colors.text.variant5}>
           {t("theme")}
         </Typography>
-        <Typography css={st.title} color={Colors.text.variant4} variant="h1">
+        <Typography
+          css={st.title(isSmallerFont)}
+          color={Colors.text.variant4}
+          variant="h1"
+        >
           {t("title")}
         </Typography>
       </Stack>
@@ -27,7 +36,12 @@ export const ThemeSection = ({ OverviewRef }: ThemeSectionType) => {
         <Image src={inner} alt="inner" fill />
       </div>
       <div>
-        <Typography css={st.bottom} color={Colors.text.variant4} variant="h3">
+        <Typography
+          css={st.bottom(isSmallerFont)}
+          color={Colors.text.variant4}
+          variant="h3"
+        
+        >
           {isMedium ? parse(t("bottom_mobile")) : parse(t("bottom"))}
         </Typography>
       </div>
@@ -47,20 +61,24 @@ const st = {
       padding: 11.163vw 8.372vw;
     }
   `,
-  title: css`
+  title: (isSmallerFont: boolean) => css`
     text-decoration: underline;
     text-underline-position: under;
     line-height: 1.5;
+    font-size: ${isSmallerFont ? "5.581vw !important" : "6.977vw"};
   `,
   inner: css`
     position: relative;
     width: 100%;
     aspect-ratio: 1600 / 1569;
   `,
-  bottom: css`
+  bottom: (isSmallerFont: boolean) => css`
     & span {
       font-weight: 700;
     }
     line-height: 1.5;
+    @media ${Mq.md} {
+      font-size: ${isSmallerFont ? "3.721vw !important" : "4.651vw"};
+    }
   `,
 };

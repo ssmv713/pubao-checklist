@@ -22,6 +22,7 @@
   },
   "requirements": {
     "title": "PRODUCTION\nREQUIREMENTS",
+    "title": "PRODUCTION REQUIREMENTS",
     "desc": "HORIZONTAL VIDEO PRODUCTION",
     "items": [
       {
@@ -46,6 +47,7 @@
   },
   "select": {
     "title": "PRELIMINARY\nSELECTION",
+    "title_mobile": "PRELIMINARY SELECTION",
     "desc1": "100 Video Productions",
     "desc2": "From individuals or teams with 2~5 people."
   },
@@ -54,6 +56,7 @@
     "lists": [
       {
         "desc": "Application & Video Submission Period",
+        "desc_mobile": "Application & Video\nSubmission Period",
         "deadline": "May 1 to July 28, 2023"
       },
       {

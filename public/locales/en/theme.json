@@ -1,5 +1,6 @@
 {
   "theme": "THEME",
   "title": "The 'K-Culture' that I Want to\nIntroduce to My Country",
-  "bottom": "<span className=\"bold\">Select from a wide range of topics :</span>\nFood, beauty, fashion, music, lifestyle, media, travel, nature, history, religion(in relation to tradition/history), and more!"
+  "bottom": "<span className=\"bold\">Select from a wide range of topics :</span>\nFood, beauty, fashion, music, lifestyle, media, travel, nature, history, religion(in relation to tradition/history), and more!",
+  "bottom_mobile": "<span className=\"bold\">Select from a wide range of topics :</span>\nFood, beauty, fashion, music, lifestyle, media, travel, nature, history, religion(in relation to tradition/history), and more!"
 }

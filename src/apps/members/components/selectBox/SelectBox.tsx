@@ -64,7 +64,12 @@ export const SelectBox = ({ scrollPosition }: SelectBoxType) => {
           alignItems={"center"}
           spacing="1.042vw"
         >
-          <Typography variant="body2" color={Colors.brand.primary}>
+          <Typography
+            variant="body2"
+            color={
+              scrollPosition > 10 ? Colors.common.white : Colors.brand.primary
+            }
+          >
             {selectedLang}
           </Typography>
           <Image
@@ -100,6 +105,7 @@ const st = {
     cursor: pointer;
     @media ${Mq.md} {
       width: fit-content;
+
       & p {
         font-size: 3.651vw;
       }
@@ -119,10 +125,16 @@ const st = {
     background: #fff;
     box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
       0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+    @media ${Mq.md} {
+      top: 7vw;
+    }
   `,
   lang: (isSelected: boolean) => css`
     color: ${Colors.text.variant1};
     padding: 0.8vw 1.2vw;
+    @media ${Mq.md} {
+      padding: 2vw 2.5vw;
+    }
     &:hover {
       background: rgba(95, 0, 145, 0.09);
     }

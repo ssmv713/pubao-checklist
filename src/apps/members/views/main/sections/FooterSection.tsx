@@ -17,7 +17,11 @@ export const FooterSection = ({ handleScrollToTop }: FooterSectionType) => {
   return (
     <Stack css={st.root}>
       <Button css={st.button} onClick={handleScrollToTop}>
-        <Stack direction="row" spacing="1.042vw">
+        <Stack
+          direction="row"
+          alignItems={"center"}
+          spacing={isMedium ? "3.368vw" : "1.042vw"}
+        >
           <Typography
             fontSize={isMedium ? "2.791vw" : "2.083vw"}
             fontWeight={400}
@@ -72,24 +76,36 @@ const st = {
     background: #010f21;
     align-items: center;
     justify-content: space-between;
+    @media ${Mq.md} {
+      aspect-ratio: 430 / 252;
+      padding: 10vw 0;
+    }
   `,
   button: css`
     min-width: 19.896vw;
     padding: 2.604vw 1.5vw;
     border: 0.208vw solid #ffffff;
     border-radius: 5.208vw;
+    @media ${Mq.md} {
+      min-width: 29.896vw;
+      padding: 2.604vw 3.5vw;
+    }
   `,
   top: css`
     position: relative;
     width: 2.5vw;
-    height: 2.5vw;
+    aspect-ratio: 1;
+    @media ${Mq.md} {
+      width: 5.791vw;
+    }
   `,
   kocis: css`
     position: relative;
     width: 19.323vw;
     aspect-ratio: 371 / 97;
     @media ${Mq.md} {
-      width: 24.651vw;
+      width: 27.651vw;
+      aspect-ratio: 351 / 75;
     }
   `,
   arirang: css`

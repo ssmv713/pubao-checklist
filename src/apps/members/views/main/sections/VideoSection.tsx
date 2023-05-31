@@ -27,7 +27,7 @@ const st = {
     width: 100%;
     margin-bottom: -0.26vw;
     @media ${Mq.md} {
-      margin-bottom: -0.465vw;
+      margin-bottom: -1.465vw;
     }
   `,
   video: css`

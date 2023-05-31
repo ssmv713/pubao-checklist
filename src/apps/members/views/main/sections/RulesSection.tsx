@@ -12,9 +12,14 @@ type RulesSectionType = {
 };
 
 export const RulesSection = ({ RulesRef }: RulesSectionType) => {
-  const { t } = useTranslation("rules");
+  const { t, i18n } = useTranslation("rules");
   const items: RulesItemsType[] = t("items", { returnObjects: true });
   const { isMedium } = useCustomMediaQuery();
+  const hasMobileFooter =
+    i18n.language === "ch" || i18n.language === "ko" || i18n.language === "sp";
+
+  const isSpanish = i18n.language === "sp";
+  console.log(isSpanish);
   return (
     <div css={st.root} ref={RulesRef} id="Rules">
       <Typography
@@ -27,7 +32,7 @@ export const RulesSection = ({ RulesRef }: RulesSectionType) => {
       </Typography>
       <Stack
         direction={isMedium ? "column" : "row"}
-        spacing={"2.083vw"}
+        spacing={isMedium ? "4.083vw" : "2.083vw"}
         css={st.items}
       >
         {items.map((it, index) => (
@@ -61,14 +66,14 @@ export const RulesSection = ({ RulesRef }: RulesSectionType) => {
           </Stack>
         ))}
       </Stack>
-      <div css={st.footnote}>
+      <div css={st.footnote(isSpanish)}>
         <Typography
           pl="0.833vw"
           color={Colors.common.black}
           variant="subtitle1"
           css={st.px10}
         >
-          {t("footnote")}
+          {isMedium && hasMobileFooter ? t("footnote_mobile") : t("footnote")}
         </Typography>
       </div>
       <div css={st.buttonWrap}>
@@ -80,6 +85,7 @@ export const RulesSection = ({ RulesRef }: RulesSectionType) => {
             color={Colors.common.white}
             variant="subtitle2"
             fontWeight={700}
+            css={isSpanish && st.px13}
           >
             {t("download")}
           </Typography>
@@ -98,6 +104,9 @@ const st = {
       text-decoration: underline;
       text-underline-position: under;
     }
+  `,
+  px13: css`
+    font-size: 3.023vw !important;
   `,
   px12: css`
     @media ${Mq.md} {
@@ -150,7 +159,7 @@ const st = {
       box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
     }
   `,
-  footnote: css`
+  footnote: (isSpanish: boolean) => css`
     list-style: square;
     margin: 3.646vw 0 10.417vw 0;
     display: flex;
@@ -159,6 +168,9 @@ const st = {
       font-size: 1.771vw;
       font-weight: 700;
       padding-top: 1vw;
+      @media ${Mq.md} {
+        content: ${isSpanish ? "''" : "'*'"};
+      }
     }
   `,
   buttonWrap: css`

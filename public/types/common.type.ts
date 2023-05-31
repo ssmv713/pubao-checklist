@@ -1,6 +1,8 @@
 export type ExampleType = {
   title: string;
   desc: string;
+  title_mobile: string;
+  desc_mobile: string;
 };
 ////////requirements///////////
 export type EligibilityType = {
@@ -20,6 +22,7 @@ export type CategoryItemsType = {
 
 export type RequirementsType = {
   title: string;
+  title_mobile: string;
   desc: string;
   items: RequirementItemsType[];
 };
@@ -31,6 +34,7 @@ export type RequirementItemsType = {
 
 export type SelectType = {
   title: string;
+  title_mobile: string;
   desc1: string;
   desc2: string;
 };
@@ -39,10 +43,12 @@ export type ScheduleType = {
   title: string;
   lists: ScheduleListsType[];
   desc: string | string[];
+  desc_mobile: string | string[];
 };
 
 export type ScheduleListsType = {
   desc: string;
+  desc_mobile: string;
   deadline: string;
 };
 

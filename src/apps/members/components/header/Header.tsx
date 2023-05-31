@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 import { SelectBox } from "../selectBox/SelectBox";
 import { useEffect, useState } from "react";
 
-const menus = ["Overview", "Prize", "Rules", "Contact Us"];
+const menus = ["Overview", "Awards", "Rules", "Contact Us"];
 
 type HeaderType = {
   scrollToSection: (index: number) => void;

@@ -4,22 +4,36 @@ import { Colors, Mq, useCustomMediaQuery } from "@/common/theme";
 import { useTranslation } from "react-i18next";
 import { AwardsCategoryType, AwardsType } from "@/types/common.type";
 import parse from "html-react-parser";
+import { stringify } from "querystring";
 
 type AwardsSectionType = {
-  PrizeRef: React.RefObject<HTMLDivElement>;
+  AwardsRef: React.RefObject<HTMLDivElement>;
 };
 
-export const AwardsSection = ({ PrizeRef }: AwardsSectionType) => {
-  const { t } = useTranslation("awards");
+export const AwardsSection = ({ AwardsRef }: AwardsSectionType) => {
+  const { t, i18n } = useTranslation("awards");
   const awards: AwardsType = t("awards", { returnObjects: true });
   const category: AwardsCategoryType = t("category", { returnObjects: true });
   const { isMedium } = useCustomMediaQuery();
-
+  const isSmallerFont = i18n.language === "en" || i18n.language === "th";
+  let grid_template_columns: string;
+  const currentLanguage = i18n.language;
+  if (currentLanguage === "en") {
+    grid_template_columns = "30% 30% 40%";
+  } else if (currentLanguage === "vi") {
+    grid_template_columns = "30% 32% 38%";
+  } else if (currentLanguage === "th") {
+    grid_template_columns = "42% 33% 25%";
+  } else if (currentLanguage === "sp") {
+    grid_template_columns = "26% 35% 39%";
+  } else {
+    grid_template_columns = "1fr 1fr 1fr";
+  }
   return (
     <Stack
       css={st.root}
       spacing={isMedium ? "12.093vw" : "5.208vw"}
-      ref={PrizeRef}
+      ref={AwardsRef}
       id="Prize"
     >
       <Stack direction={isMedium ? "column" : "row"}>
@@ -28,13 +42,17 @@ export const AwardsSection = ({ PrizeRef }: AwardsSectionType) => {
         </Typography>
         <div>
           <Typography
-            css={st.px16}
+            css={st.px16(isSmallerFont)}
             color={Colors.text.variant5}
             variant="subtitle2"
           >
             {awards.desc1}
           </Typography>
-          <Typography css={st.px22} color={Colors.text.variant5} variant="h5">
+          <Typography
+            css={st.px22(isSmallerFont)}
+            color={Colors.text.variant5}
+            variant="h5"
+          >
             {awards.desc2}
           </Typography>
         </div>
@@ -44,7 +62,7 @@ export const AwardsSection = ({ PrizeRef }: AwardsSectionType) => {
           {category.title}
         </Typography>
         <Typography
-          css={st.px16}
+          css={st.px16(isSmallerFont)}
           color={Colors.text.variant5}
           variant="subtitle2"
         >
@@ -69,7 +87,7 @@ export const AwardsSection = ({ PrizeRef }: AwardsSectionType) => {
               {/* 테이블 */}
               <Stack css={st.table}>
                 {/* <Stack css={st.table} spacing="0.208vw"> */}
-                <div css={st.table_row}>
+                <div css={st.table_row(grid_template_columns)}>
                   {it.table.header.map((list, index) => (
                     <Typography key={index} css={st.beige_bg}>
                       {list}
@@ -77,7 +95,7 @@ export const AwardsSection = ({ PrizeRef }: AwardsSectionType) => {
                   ))}
                 </div>
                 {it.table.content.map((row, index) => (
-                  <div key={index} css={st.table_row}>
+                  <div key={index} css={st.table_row(grid_template_columns)}>
                     <Typography css={st.beige_bg}>{row.title}</Typography>
                     <Typography css={st.sky_bg}>{row.award}</Typography>
                     <Typography css={st.sky_bg}>{row.amount}</Typography>
@@ -111,20 +129,21 @@ const st = {
       font-weight: 700;
     }
   `,
-  px16: css`
+  px16: (isSmallerFont: boolean) => css`
     @media ${Mq.md} {
-      font-size: 3.721vw;
+      font-size: ${isSmallerFont ? "2.791vw !important" : "3.721vw"};
     }
   `,
-  px22: css`
+  px22: (isSmallerFont: boolean) => css`
     @media ${Mq.md} {
-      font-size: 5.116vw;
+      font-size: ${isSmallerFont ? "4.651vw" : "5.116vw;"};
     }
   `,
   title: css`
     width: 26.042vw;
     @media ${Mq.md} {
       margin-bottom: 4.651vw;
+      width: 46.042vw;
     }
   `,
   items: css`
@@ -137,10 +156,11 @@ const st = {
     font-size: 1.354vw;
     gap: 4px;
   `,
-  table_row: css`
+  table_row: (grid_template_columns: string) => css`
     display: grid;
     width: 100%;
-    grid-template-columns: 1fr 1fr 1fr;
+
+    grid-template-columns: ${grid_template_columns};
     grid-gap: 4px;
   `,
   beige_bg: css`
@@ -148,6 +168,10 @@ const st = {
     text-align: center;
     color: ${Colors.text.variant7};
     padding: 0.417vw 0;
+    @media ${Mq.md} {
+      font-size: 3.023vw;
+      padding: 1vw 0;
+    }
   `,
   sky_bg: css`
     background: #bae6ff;
@@ -155,5 +179,9 @@ const st = {
     color: ${Colors.text.variant7};
     font-weight: 400;
     padding: 0.417vw 0;
+    @media ${Mq.md} {
+      font-size: 3.023vw;
+      padding: 1vw 0;
+    }
   `,
 };

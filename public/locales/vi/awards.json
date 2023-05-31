@@ -27,7 +27,7 @@
       {
         "desc": "<span className=\"bold\">Nhà sáng tạo chuyên nghiệp</span>\n14 triệu won / 4 tác phẩm",
         "table": {
-          "header": ["구분", "상금", "작품개수"],
+          "header": ["Giải Thưởng", "Tiền Thưởng", "Số Lượng Tác Phẩm"],
           "content": [
             { "title": "Vàng", "award": "5,000,000 won", "amount": "1 Video" },
             { "title": "Bạc", "award": "4,000,000 won", "amount": "1 Video" },

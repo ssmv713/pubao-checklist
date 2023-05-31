@@ -6,10 +6,10 @@ import menu from "@/assets/icons/menu.svg";
 import { SelectBox } from "../selectBox/SelectBox";
 import { Dialog, Typography } from "@mui/material";
 import cross from "@/assets/icons/cross.svg";
-import { Colors } from "@/common/theme";
+import { Colors, useCustomMediaQuery } from "@/common/theme";
 import Link from "next/link";
 
-const menus = ["Overview", "Prize", "Rules", "Contact Us"];
+const menus = ["Overview", "Awards", "Rules", "Contact Us"];
 
 type HeaderType = {
   scrollToSection: (index: number) => void;
@@ -36,6 +36,7 @@ export const MobileHeader = ({ scrollToSection }: HeaderType) => {
   const handleClose = () => {
     setOpen(false);
   };
+  const { isMedium } = useCustomMediaQuery();
   return (
     <div css={[st.root, scrollPosition > 10 && st.scrollled_root]}>
       <Dialog onClose={handleClose} open={open} fullScreen>
@@ -49,7 +50,10 @@ export const MobileHeader = ({ scrollToSection }: HeaderType) => {
             {menus.map((menu, index) => (
               <Link href={`#${menu}`} key={index} onClick={handleClose}>
                 <li>
-                  <Typography fontSize={"7.442vw"} color={Colors.brand.primary}>
+                  <Typography
+                    fontSize={"7.442vw !important"}
+                    color={Colors.brand.primary}
+                  >
                     {menu}
                   </Typography>
                 </li>
@@ -58,6 +62,7 @@ export const MobileHeader = ({ scrollToSection }: HeaderType) => {
           </ul>
         </div>
       </Dialog>
+
       <SelectBox scrollPosition={scrollPosition} />
       <div css={st.menu} onClick={handleClickOpen}>
         <Image src={menu} alt="menu" fill />

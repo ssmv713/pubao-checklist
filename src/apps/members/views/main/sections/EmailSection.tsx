@@ -1,4 +1,4 @@
-import { Colors } from "@/common/theme";
+import { Colors, Mq } from "@/common/theme";
 import { css } from "@emotion/react";
 import { Stack, Typography } from "@mui/material";
 import Link from "next/link";
@@ -12,7 +12,7 @@ export const EmailSection = ({ ContactRef }: EmailSectionType) => {
   return (
     <div css={st.root} ref={ContactRef} id="Contact Us">
       <Stack css={st.inner} spacing="5.208vw">
-        <Stack direction="row" spacing="3.802vw">
+        <Stack direction="row" spacing="3.802vw" alignItems={"center"}>
           <Typography
             css={st.title}
             color={Colors.common.white}
@@ -31,7 +31,7 @@ export const EmailSection = ({ ContactRef }: EmailSectionType) => {
             </Typography>
           </Link>
         </Stack>
-        <Stack direction="row" spacing="3.802vw">
+        <Stack direction="row" spacing="3.802vw" alignItems={"center"}>
           <Typography
             css={st.title}
             color={Colors.common.white}
@@ -78,5 +78,8 @@ const st = {
     box-shadow: 0px 6px 6px rgba(241, 241, 241, 0.15);
     border-radius: 5.208vw;
     flex: 1;
+    @media ${Mq.md} {
+      padding: 1.326vw 2.791vw;
+    }
   `,
 };

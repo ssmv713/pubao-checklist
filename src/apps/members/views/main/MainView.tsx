@@ -17,7 +17,7 @@ import { MobileMainSection } from "./sections/mobile";
 export const MainView = () => {
   const mainRef = useRef<HTMLDivElement>(null);
   const OverviewRef = useRef<HTMLDivElement>(null);
-  const PrizeRef = useRef<HTMLDivElement>(null);
+  const AwardsRef = useRef<HTMLDivElement>(null);
   const RulesRef = useRef<HTMLDivElement>(null);
   const ContactRef = useRef<HTMLDivElement>(null);
   console.log(mainRef);
@@ -25,7 +25,7 @@ export const MainView = () => {
     mainRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const refArr = [OverviewRef, PrizeRef, RulesRef, ContactRef];
+  const refArr = [OverviewRef, AwardsRef, RulesRef, ContactRef];
 
   const scrollToSection = (index: number) => {
     refArr[index].current?.scrollIntoView({ behavior: "smooth" });
@@ -47,7 +47,7 @@ export const MainView = () => {
       <ThemeSection OverviewRef={OverviewRef} />
       <ExampleSection />
       <RequirementsSection />
-      <AwardsSection PrizeRef={PrizeRef} />
+      <AwardsSection AwardsRef={AwardsRef} />
       <RulesSection RulesRef={RulesRef} />
       <EmailSection ContactRef={ContactRef} />
       <FooterSection handleScrollToTop={handleScrollToTop} />

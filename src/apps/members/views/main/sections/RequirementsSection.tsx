@@ -12,7 +12,7 @@ import {
 import { Colors, Mq, useCustomMediaQuery } from "@/common/theme";
 
 export const RequirementsSection = () => {
-  const { t } = useTranslation("requirements");
+  const { t, i18n } = useTranslation("requirements");
   const eligibility: EligibilityType = t("eligibility", {
     returnObjects: true,
   });
@@ -29,8 +29,9 @@ export const RequirementsSection = () => {
     returnObjects: true,
   });
   const { isMedium } = useCustomMediaQuery();
+  const isVietnamese = i18n.language === "vi";
   return (
-    <Stack css={st.root} spacing="5.208vw">
+    <Stack css={st.root} spacing={isMedium ? "10.465vw" : "5.208vw"}>
       <List title={eligibility.title}>
         <ul>
           {eligibility.desc.map((it, index) => (
@@ -114,7 +115,13 @@ export const RequirementsSection = () => {
           </Stack>
         </div>
       </List>
-      <List title={select.title}>
+      <List
+        title={
+          isMedium && select.hasOwnProperty("title_mobile")
+            ? select.title_mobile
+            : select.title
+        }
+      >
         <Typography variant="h5" color={Colors.text.variant6}>
           {select.desc1}
         </Typography>
@@ -129,25 +136,29 @@ export const RequirementsSection = () => {
       <List title={schedule.title}>
         <Stack spacing="3.125vw">
           {schedule.lists.map((it, index) => (
-            <Stack key={index} direction="row">
-              <div css={st.schedule}>
+            <dl key={index} css={st.schedule_dl}>
+              <dt css={st.schedule_dt(isVietnamese)}>
                 <Typography
                   css={st.schedule_text}
                   color={Colors.common.black}
                   variant="subtitle2"
                   fontWeight={700}
                 >
-                  {it.desc}
+                  {isMedium && it.hasOwnProperty("desc_mobile")
+                    ? it.desc_mobile
+                    : it.desc}
                 </Typography>
-              </div>
-              <Typography
-                css={st.deadline}
-                color={Colors.common.white}
-                variant="subtitle2"
-              >
-                {it.deadline}
-              </Typography>
-            </Stack>
+              </dt>
+              <dd css={st.schedule_dd}>
+                <Typography
+                  css={st.deadline}
+                  color={Colors.common.white}
+                  variant="subtitle2"
+                >
+                  {it.deadline}
+                </Typography>
+              </dd>
+            </dl>
           ))}
         </Stack>
         {Array.isArray(schedule.desc) ? (
@@ -166,7 +177,9 @@ export const RequirementsSection = () => {
             color={Colors.common.white}
             variant="body2"
           >
-            {schedule.desc}
+            {isMedium && schedule.hasOwnProperty("desc_mobile")
+              ? schedule.desc_mobile
+              : schedule.desc}
           </Typography>
         )}
       </List>
@@ -178,6 +191,9 @@ const st = {
   root: css`
     background: #ff6a00;
     padding: 12.791vw 8.372vw;
+    @media ${Mq.md} {
+      padding: 12.791vw 6.372vw;
+    }
   `,
   px14: css`
     @media ${Mq.md} {
@@ -226,20 +242,30 @@ const st = {
       font-size: 2.791vw !important;
     }
   `,
-  schedule: css`
+
+  schedule_dl: css`
+    display: flex;
+  `,
+  schedule_dt: (isVietnamese: boolean) => css`
+    width: ${isVietnamese ? "48%" : "60%"};
+    @media ${Mq.md} {
+      width: ${isVietnamese ? "57%" : "60%"};
+    }
+  `,
+  schedule_dd: css`
     flex: 1;
   `,
   schedule_text: css`
     text-decoration: underline;
     text-underline-position: under;
     text-decoration-thickness: 0.104vw;
+
     @media ${Mq.md} {
       font-size: 3.023vw;
       text-decoration: none;
     }
   `,
   deadline: css`
-    width: 36.458vw;
     @media ${Mq.md} {
       font-size: 3.023vw;
     }
@@ -248,6 +274,10 @@ const st = {
     margin-top: 2.083vw;
     list-style: disc;
     color: white;
+    @media ${Mq.md} {
+      font-size: 2.326vw;
+      margin-top: 4.651vw;
+    }
   `,
   list_title: css`
     width: 26.042vw;
