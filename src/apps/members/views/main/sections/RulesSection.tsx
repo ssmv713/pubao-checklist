@@ -19,7 +19,8 @@ export const RulesSection = ({ RulesRef }: RulesSectionType) => {
     i18n.language === "ch" || i18n.language === "ko" || i18n.language === "sp";
 
   const isSpanish = i18n.language === "sp";
-  console.log(isSpanish);
+  const hasPadding =
+    i18n.language === "vi" || i18n.language === "th" || i18n.language === "sp";
   return (
     <div css={st.root} ref={RulesRef} id="Rules">
       <Typography
@@ -40,7 +41,10 @@ export const RulesSection = ({ RulesRef }: RulesSectionType) => {
             <Typography css={st.card_title(it.title.color)}>
               {parse(it.title.text)}
             </Typography>
-            <Stack spacing="4.167vw" css={st.card}>
+            <Stack
+              spacing={isMedium ? "7.907vw" : "4.167vw"}
+              css={st.card(hasPadding)}
+            >
               {it.card.map((list, index) => (
                 <div key={index}>
                   <Typography
@@ -144,10 +148,11 @@ const st = {
     @media ${Mq.md} {
       font-size: 4.651vw;
       padding: 3.256vw 5.116vw;
-      height: auto;
+      height: 13.023vw;
+      border-radius: 6.512vw;
     }
   `,
-  card: css`
+  card: (hasPadding: boolean) => css`
     padding: 7.292vw 0;
     align-items: center;
     box-shadow: 0vw 0.156vw 0.313vw rgba(0, 0, 0, 0.16);
@@ -157,6 +162,9 @@ const st = {
     justify-content: space-between;
     @media ${Mq.md} {
       box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+      & h6 {
+        font-size: 3.721vw;
+      }
     }
   `,
   footnote: (isSpanish: boolean) => css`
