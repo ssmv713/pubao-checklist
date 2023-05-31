@@ -8,6 +8,7 @@ import { Colors } from "@/common/theme";
 import movie from "@/assets/images/movie.png";
 import people from "@/assets/images/main_people.png";
 import { useTranslation } from "react-i18next";
+import Link from "next/dist/client/link";
 
 type MainSectionType = {
   mainRef: React.RefObject<HTMLDivElement>;
@@ -51,16 +52,18 @@ export const MainSection = ({ mainRef }: MainSectionType) => {
       <div css={st.title(imageWidth, imageHeight)}>
         <Image src={title} alt="title" fill />
       </div>
-      <Button css={st.button}>
-        <Stack direction="row" alignItems={"center"} spacing="0.938vw">
-          <div css={st.download}>
-            <Image src={download} alt="download" fill />
-          </div>
-          <Typography color={Colors.common.white} variant="subtitle2">
-            {t("download")}
-          </Typography>
-        </Stack>
-      </Button>
+      <Link href="https://portfolio.ureca.im/test/form.zip">
+        <Button css={st.button}>
+          <Stack direction="row" alignItems={"center"} spacing="0.938vw">
+            <div css={st.download}>
+              <Image src={download} alt="download" fill />
+            </div>
+            <Typography color={Colors.common.white} variant="subtitle2">
+              {t("download")}
+            </Typography>
+          </Stack>
+        </Button>
+      </Link>
     </Stack>
   );
 };

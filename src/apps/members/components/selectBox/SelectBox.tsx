@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Colors, Mq, useCustomMediaQuery } from "@/common/theme";
 import { css } from "@emotion/react";
+import Link from "next/link";
 
 const langs = [
   { lang: "한국어", value: "ko" },
@@ -58,7 +59,7 @@ export const SelectBox = ({ scrollPosition }: SelectBoxType) => {
   const { isMedium } = useCustomMediaQuery();
   return (
     <>
-      <div css={st.selectBox} ref={selectBoxRef} >
+      <div css={st.selectBox} ref={selectBoxRef}>
         <Stack
           onClick={toggleDropdown}
           direction="row"
@@ -66,7 +67,6 @@ export const SelectBox = ({ scrollPosition }: SelectBoxType) => {
           spacing="1.042vw"
         >
           <Typography
-          
             variant="body2"
             color={
               scrollPosition > 10 ? Colors.common.white : Colors.brand.primary
