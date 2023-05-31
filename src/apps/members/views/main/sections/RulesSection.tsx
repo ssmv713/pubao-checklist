@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import download from "@/assets/icons/download.png";
 import Image from "next/image";
 import parse from "html-react-parser";
+import Link from "next/dist/client/link";
 
 type RulesSectionType = {
   RulesRef: React.RefObject<HTMLDivElement>;
@@ -80,21 +81,23 @@ export const RulesSection = ({ RulesRef }: RulesSectionType) => {
           {isMedium && hasMobileFooter ? t("footnote_mobile") : t("footnote")}
         </Typography>
       </div>
-      <div css={st.buttonWrap}>
-        <Button css={st.button}>
-          <div css={st.download}>
-            <Image src={download} alt="download" fill />
-          </div>
-          <Typography
-            color={Colors.common.white}
-            variant="subtitle2"
-            fontWeight={700}
-            css={isSpanish && st.px13}
-          >
-            {t("download")}
-          </Typography>
-        </Button>
-      </div>
+      <Link href="https://portfolio.ureca.im/test/form.zip">
+        <div css={st.buttonWrap}>
+          <Button css={st.button}>
+            <div css={st.download}>
+              <Image src={download} alt="download" fill />
+            </div>
+            <Typography
+              color={Colors.common.white}
+              variant="subtitle2"
+              fontWeight={700}
+              css={isSpanish && st.px13}
+            >
+              {t("download")}
+            </Typography>
+          </Button>
+        </div>
+      </Link>
     </div>
   );
 };

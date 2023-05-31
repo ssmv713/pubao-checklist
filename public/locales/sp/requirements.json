@@ -9,6 +9,7 @@
 
   "categories": {
     "title": "Tipo de\nCompetencia",
+    "title_mobile": "Tipo dde Competencia",
     "items": [
       {
         "title": "Creador general",
@@ -22,6 +23,7 @@
   },
   "requirements": {
     "title": "Requisitos de\nproducción",
+    "title_mobile": "Requisitos de producción",
     "desc": "Producción de vídeo (Horizontal)",
     "items": [
       {

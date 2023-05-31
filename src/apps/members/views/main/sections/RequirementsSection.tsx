@@ -48,7 +48,13 @@ export const RequirementsSection = () => {
           ))}
         </ul>
       </List>
-      <List title={categories.title}>
+      <List
+        title={
+          isMedium && categories.hasOwnProperty("title_mobile")
+            ? categories.title_mobile
+            : categories.title
+        }
+      >
         <Stack direction="row" spacing="3.125vw">
           {categories.items.map((it, index) => (
             <Stack css={st.category_item} key={index} alignItems="center">
@@ -66,7 +72,13 @@ export const RequirementsSection = () => {
           ))}
         </Stack>
       </List>
-      <List title={requirements.title}>
+      <List
+        title={
+          isMedium && requirements.hasOwnProperty("title_mobile")
+            ? requirements.title_mobile
+            : requirements.title
+        }
+      >
         <div>
           <Typography
             css={st.px14}

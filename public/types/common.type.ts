@@ -12,11 +12,13 @@ export type EligibilityType = {
 
 export type CategoriesType = {
   title: string;
+  title_mobile: string;
   items: CategoryItemsType[];
 };
 
 export type CategoryItemsType = {
   title: string;
+  title_mobile: string;
   desc: string;
 };
 

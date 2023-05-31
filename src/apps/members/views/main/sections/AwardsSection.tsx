@@ -130,6 +130,7 @@ const st = {
     }
   `,
   px16: (isSmallerFont: boolean) => css`
+    flex: 1;
     @media ${Mq.md} {
       font-size: ${isSmallerFont ? "2.791vw !important" : "3.721vw"};
     }
