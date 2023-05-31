@@ -21,7 +21,7 @@ type SelectBoxType = {
   scrollPosition: number;
 };
 
-export const SelectBox = ({ scrollPosition }: SelectBoxType) => {
+export const MobileSelectBox = ({ scrollPosition }: SelectBoxType) => {
   const { i18n } = useTranslation("landing");
   const handleLanguageChange = (language: string) => {
     i18n.changeLanguage(language);
@@ -55,10 +55,10 @@ export const SelectBox = ({ scrollPosition }: SelectBoxType) => {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
   }, []);
-  const { isMedium } = useCustomMediaQuery();
+
   return (
     <>
-      <div css={st.selectBox} ref={selectBoxRef} >
+      <div css={st.selectBox} ref={selectBoxRef}>
         <Stack
           onClick={toggleDropdown}
           direction="row"
@@ -66,20 +66,21 @@ export const SelectBox = ({ scrollPosition }: SelectBoxType) => {
           spacing="1.042vw"
         >
           <Typography
-          
-            variant="body2"
+            mr="2.326vw"
+            fontSize={"7.442vw !important"}
             color={
               scrollPosition > 10 ? Colors.common.white : Colors.brand.primary
             }
           >
             {selectedLang}
           </Typography>
-          <Image
-            src={scrollPosition > 10 ? white_arrow : purple_arrow}
-            alt="arrow"
-            width={12}
-            height={6}
-          />
+          <div css={st.arrow}>
+            <Image
+              src={scrollPosition > 10 ? white_arrow : purple_arrow}
+              alt="arrow"
+              fill
+            />
+          </div>
         </Stack>
         {isOpen && (
           <ul css={st.lists}>
@@ -114,6 +115,11 @@ const st = {
       margin-right: 15px;
     }
   `,
+  arrow: css`
+    position: relative;
+    aspect-ratio: 12 / 6;
+    width: 4.186vw;
+  `,
   lists: css`
     position: absolute;
     top: 2vw;
@@ -128,7 +134,8 @@ const st = {
     box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
       0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
     @media ${Mq.md} {
-      top: 7vw;
+      top: 12vw;
+      left: 0.7vw;
     }
   `,
   lang: (isSelected: boolean) => css`

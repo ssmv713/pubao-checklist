@@ -3,11 +3,11 @@ import { css } from "@emotion/react";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import menu from "@/assets/icons/menu.svg";
-import { SelectBox } from "../selectBox/SelectBox";
 import { Dialog, Typography } from "@mui/material";
 import cross from "@/assets/icons/cross.svg";
 import { Colors, useCustomMediaQuery } from "@/common/theme";
 import Link from "next/link";
+import { MobileSelectBox } from "../selectBox/MobileSelectBox";
 
 const menus = ["Overview", "Awards", "Rules", "Contact Us"];
 
@@ -60,10 +60,10 @@ export const MobileHeader = ({ scrollToSection }: HeaderType) => {
               </Link>
             ))}
           </ul>
+          <MobileSelectBox scrollPosition={scrollPosition} />
         </div>
       </Dialog>
 
-      <SelectBox scrollPosition={scrollPosition} />
       <div css={st.menu} onClick={handleClickOpen}>
         <Image src={menu} alt="menu" fill />
       </div>
@@ -107,6 +107,7 @@ const st = {
     flex-direction: column;
     gap: 12.791vw;
     margin-top: 14.186vw;
+    margin-bottom: 12.791vw;
   `,
   menu: css`
     position: relative;
