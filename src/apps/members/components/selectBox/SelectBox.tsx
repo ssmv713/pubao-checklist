@@ -118,12 +118,13 @@ const st = {
     position: absolute;
     top: 2vw;
     left: -1.3vw;
+    font-size: 1.042vw;
     border-radius: 0.781vw;
     cursor: pointer;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-
+    min-width: 5.208vw;
     background: #fff;
     box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
       0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);

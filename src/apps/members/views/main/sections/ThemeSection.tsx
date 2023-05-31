@@ -40,7 +40,6 @@ export const ThemeSection = ({ OverviewRef }: ThemeSectionType) => {
           css={st.bottom(isSmallerFont)}
           color={Colors.text.variant4}
           variant="h3"
-        
         >
           {isMedium ? parse(t("bottom_mobile")) : parse(t("bottom"))}
         </Typography>
@@ -65,7 +64,9 @@ const st = {
     text-decoration: underline;
     text-underline-position: under;
     line-height: 1.5;
-    font-size: ${isSmallerFont ? "5.581vw !important" : "6.977vw"};
+    @media ${Mq.md} {
+      font-size: ${isSmallerFont ? "5.581vw !important" : "6.977vw"};
+    }
   `,
   inner: css`
     position: relative;
