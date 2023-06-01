@@ -46,7 +46,7 @@ export const RulesSection = ({ RulesRef }: RulesSectionType) => {
             </Typography>
             <Stack
               spacing={isMedium ? "7.907vw" : "4.167vw"}
-              css={st.card(hasPadding, isChinese)}
+              css={st.card(hasPadding)}
             >
               {it.card.map((list, index) => (
                 <div key={index}>
@@ -157,7 +157,7 @@ const st = {
       border-radius: 6.512vw;
     }
   `,
-  card: (hasPadding: boolean, isChinese: boolean) => css`
+  card: (hasPadding: boolean) => css`
     padding: 7.292vw 0;
     align-items: center;
     box-shadow: 0vw 0.156vw 0.313vw rgba(0, 0, 0, 0.16);
@@ -171,10 +171,6 @@ const st = {
       & h6 {
         font-size: 3.721vw;
       }
-    }
-    & p,
-    h6 {
-      font-family: ${isChinese ? "'Nanum Pen Script', cursive" : ""};
     }
   `,
   footnote: (isSpanish: boolean) => css`
