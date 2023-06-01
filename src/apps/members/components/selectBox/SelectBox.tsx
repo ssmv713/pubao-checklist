@@ -84,13 +84,14 @@ export const SelectBox = ({ scrollPosition }: SelectBoxType) => {
         {isOpen && (
           <ul css={st.lists}>
             {langs.map((it, index) => (
-              <li
-                css={st.lang(it.lang == selectedLang)}
-                key={index}
-                onClick={() => handleClick(it.lang, it.value)}
-              >
-                {it.lang}
-              </li>
+              <Link href="/" key={index}>
+                <li
+                  css={st.lang(it.lang == selectedLang)}
+                  onClick={() => handleClick(it.lang, it.value)}
+                >
+                  {it.lang}
+                </li>
+              </Link>
             ))}
           </ul>
         )}

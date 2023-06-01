@@ -7,6 +7,7 @@ import { Colors } from "@/common/theme";
 import { useTranslation } from "react-i18next";
 import { SelectBox } from "../selectBox/SelectBox";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const menus = ["Overview", "Awards", "Rules", "Contact Us"];
 
@@ -32,18 +33,20 @@ export const Header = ({ scrollToSection }: HeaderType) => {
   return (
     <div css={[st.root, scrollPosition > 10 && st.scrollled_root]}>
       <Stack direction="row" justifyContent={"space-between"}>
-        <Stack direction="row" spacing={"10px"}>
-          <div css={st.kocis}>
-            <Image
-              src={scrollPosition > 10 ? kocis_white : kocis_black}
-              alt="kocis"
-              fill
-            />
-          </div>
-          <div css={st.arirang}>
-            <Image src={arirang} alt="kocis" fill />
-          </div>
-        </Stack>
+        <Link href="/">
+          <Stack direction="row" spacing={"10px"}>
+            <div css={st.kocis}>
+              <Image
+                src={scrollPosition > 10 ? kocis_white : kocis_black}
+                alt="kocis"
+                fill
+              />
+            </div>
+            <div css={st.arirang}>
+              <Image src={arirang} alt="kocis" fill />
+            </div>
+          </Stack>
+        </Link>
         <Stack direction="row" alignItems={"center"}>
           <ul css={st.nav}>
             {menus.map((menu, index) => (

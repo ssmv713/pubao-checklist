@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 export const VideoSection = () => {
   const { i18n } = useTranslation();
   const isKorean = i18n.language === "ko";
+  console.log(isKorean);
   return (
     <div css={st.root}>
       <iframe
@@ -15,7 +16,7 @@ export const VideoSection = () => {
         src={
           isKorean
             ? "https://www.youtube.com/embed/dCrfzFRXses?playlist=dCrfzFRXses&loop=1&autoplay=1&mute=1"
-            : "https://www.youtube.com/embed/CQdQ04rD8kk?playlist=dCrfzFRXses&loop=1&autoplay=1&mute=1"
+            : "https://www.youtube.com/embed/CQdQ04rD8kk?playlist=CQdQ04rD8kk&loop=1&autoplay=1&mute=1"
         }
       ></iframe>
     </div>
@@ -25,7 +26,7 @@ export const VideoSection = () => {
 const st = {
   root: css`
     width: 100%;
-    margin-bottom: -0.26vw;
+    margin-bottom: -5px;
     @media ${Mq.md} {
       margin-bottom: -1.465vw;
     }

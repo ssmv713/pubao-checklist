@@ -22,6 +22,8 @@ export const RulesSection = ({ RulesRef }: RulesSectionType) => {
   const isSpanish = i18n.language === "sp";
   const hasPadding =
     i18n.language === "vi" || i18n.language === "th" || i18n.language === "sp";
+
+  const isChinese = i18n.language === "ch";
   return (
     <div css={st.root} ref={RulesRef} id="Rules">
       <Typography
@@ -44,7 +46,7 @@ export const RulesSection = ({ RulesRef }: RulesSectionType) => {
             </Typography>
             <Stack
               spacing={isMedium ? "7.907vw" : "4.167vw"}
-              css={st.card(hasPadding)}
+              css={st.card(hasPadding, isChinese)}
             >
               {it.card.map((list, index) => (
                 <div key={index}>
@@ -155,7 +157,7 @@ const st = {
       border-radius: 6.512vw;
     }
   `,
-  card: (hasPadding: boolean) => css`
+  card: (hasPadding: boolean, isChinese: boolean) => css`
     padding: 7.292vw 0;
     align-items: center;
     box-shadow: 0vw 0.156vw 0.313vw rgba(0, 0, 0, 0.16);
@@ -163,11 +165,16 @@ const st = {
     width: 100%;
     height: 100%;
     justify-content: space-between;
+
     @media ${Mq.md} {
       box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
       & h6 {
         font-size: 3.721vw;
       }
+    }
+    & p,
+    h6 {
+      font-family: ${isChinese ? "'Nanum Pen Script', cursive" : ""};
     }
   `,
   footnote: (isSpanish: boolean) => css`

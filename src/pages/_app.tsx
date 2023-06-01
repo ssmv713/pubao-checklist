@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 
 import { lightTheme } from "@/common/theme";
 import { ThemeProvider } from "@mui/material";
-import { RecoilRoot } from "recoil";
+
 import type { AppProps } from "next/app";
 import i18n from "@/global/i18n";
 
@@ -17,9 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={lightTheme}>
         <I18nextProvider i18n={i18n}>
-          <RecoilRoot>
-            <Component {...pageProps} />
-          </RecoilRoot>
+          <Component {...pageProps} />
         </I18nextProvider>
       </ThemeProvider>
     </QueryClientProvider>
