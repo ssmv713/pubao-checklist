@@ -13,6 +13,12 @@
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff")
     format("woff");
 }
+@font-face {
+  font-family: "Heiti SC";
+  src: url("/fonts/heiti/HeitiSC-Medium.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
 * {
   box-sizing: border-box;

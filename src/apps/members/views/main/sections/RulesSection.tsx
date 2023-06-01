@@ -131,6 +131,7 @@ const st = {
     & p,
     h6 {
       font-weight: ${isChinese && 400};
+      font-family: "Heiti SC" !important;
     }
   `,
   item: css`
