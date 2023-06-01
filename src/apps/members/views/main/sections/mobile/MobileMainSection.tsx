@@ -9,6 +9,7 @@ import movie from "@/assets/images/movie.png";
 import people from "@/assets/images/main_people_mobile.png";
 import { useTranslation } from "react-i18next";
 import arirang from "@/assets/logos/arirang.png";
+import Link from "next/link";
 
 type MainSectionType = {
   mainRef: React.RefObject<HTMLDivElement>;
@@ -59,16 +60,18 @@ export const MobileMainSection = ({ mainRef }: MainSectionType) => {
       <div css={st.title(imageWidth, aspectRatio)}>
         <Image src={title} alt="title" fill />
       </div>
-      <Button css={st.button}>
-        <Stack direction="row" alignItems={"center"} spacing="2.326vw">
-          <div css={st.download}>
-            <Image src={download} alt="download" fill />
-          </div>
-          <Typography color={Colors.common.white} variant="subtitle2">
-            {t("download")}
-          </Typography>
-        </Stack>
-      </Button>
+      <Link href="https://portfolio.ureca.im/test/form.zip">
+        <Button css={st.button}>
+          <Stack direction="row" alignItems={"center"} spacing="2.326vw">
+            <div css={st.download}>
+              <Image src={download} alt="download" fill />
+            </div>
+            <Typography color={Colors.common.white} variant="subtitle2">
+              {t("download")}
+            </Typography>
+          </Stack>
+        </Button>
+      </Link>
     </Stack>
   );
 };

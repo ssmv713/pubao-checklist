@@ -28,25 +28,32 @@ export const MobileHeader = ({ scrollToSection }: HeaderType) => {
   useEffect(() => {
     window.addEventListener("scroll", updateScroll);
   });
-  const [open, setOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const handleClickOpen = () => {
-    setOpen(true);
+    setMenuOpen(true);
   };
 
   const handleClose = () => {
-    setOpen(false);
+    setMenuOpen(false);
   };
 
   const [selectedLang, setSelectedLang] = useState("한국어");
   return (
     <div css={[st.root, scrollPosition > 10 && st.scrollled_root]}>
-      <Dialog onClose={handleClose} open={open} fullScreen>
+      <Dialog onClose={handleClose} open={menuOpen} css={st.dialog_root}>
         <div css={st.dialog}>
           <div css={st.crossWrap} onClick={handleClose}>
             <div css={st.cross}>
               <Image src={cross} alt="cross" fill />
             </div>
           </div>
+
+          <MobileSelectBox
+            handleClose={handleClose}
+            setSelectedLang={setSelectedLang}
+            selectedLang={selectedLang}
+          />
+
           <ul css={st.nav}>
             {menus.map((menu, index) => (
               <Link href={`#${menu}`} key={index} onClick={handleClose}>
@@ -61,10 +68,6 @@ export const MobileHeader = ({ scrollToSection }: HeaderType) => {
               </Link>
             ))}
           </ul>
-          <MobileSelectBox
-            setSelectedLang={setSelectedLang}
-            selectedLang={selectedLang}
-          />
         </div>
       </Dialog>
 
@@ -86,6 +89,19 @@ const st = {
     display: flex;
     justify-content: flex-end;
   `,
+  dialog_root: css`
+    .MuiDialog-container {
+      justify-content: flex-end;
+    }
+    .MuiPaper-root {
+      margin: 0;
+      max-width: 100%;
+      width: 70%;
+      max-height: none;
+      height: 100vh;
+      border-radius: 0;
+    }
+  `,
   scrollled_root: css`
     background-color: rgba(0, 0, 0, 0.45);
   `,
@@ -100,6 +116,7 @@ const st = {
   crossWrap: css`
     display: flex;
     justify-content: flex-end;
+    margin-bottom: 14.186vw;
   `,
   cross: css`
     position: relative;
@@ -111,7 +128,6 @@ const st = {
     flex-direction: column;
     gap: 12.791vw;
     margin-top: 14.186vw;
-    margin-bottom: 12.791vw;
   `,
   menu: css`
     position: relative;

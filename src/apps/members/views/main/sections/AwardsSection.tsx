@@ -34,7 +34,7 @@ export const AwardsSection = ({ AwardsRef }: AwardsSectionType) => {
       css={st.root}
       spacing={isMedium ? "12.093vw" : "5.208vw"}
       ref={AwardsRef}
-      id="Prize"
+      id="Awards"
     >
       <Stack direction={isMedium ? "column" : "row"}>
         <Typography css={st.title} variant="h6" color={Colors.text.variant3}>

@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Colors, Mq, useCustomMediaQuery } from "@/common/theme";
 import { css } from "@emotion/react";
+import Link from "next/link";
 
 const langs = [
   { lang: "한국어", value: "ko" },
@@ -20,10 +21,12 @@ const langs = [
 type MobileSelectBoxType = {
   setSelectedLang: (lang: string) => void;
   selectedLang: string;
+  handleClose: () => void;
 };
 export const MobileSelectBox = ({
   setSelectedLang,
   selectedLang,
+  handleClose,
 }: MobileSelectBoxType) => {
   const { i18n } = useTranslation("landing");
   const handleLanguageChange = (language: string) => {
@@ -81,13 +84,14 @@ export const MobileSelectBox = ({
         {isOpen && (
           <ul css={st.lists}>
             {langs.map((it, index) => (
-              <li
-                css={st.lang(it.lang == selectedLang)}
-                key={index}
-                onClick={() => handleClick(it.lang, it.value)}
-              >
-                {it.lang}
-              </li>
+              <Link href="/" key={index} onClick={handleClose}>
+                <li
+                  css={st.lang(it.lang == selectedLang)}
+                  onClick={() => handleClick(it.lang, it.value)}
+                >
+                  {it.lang}
+                </li>
+              </Link>
             ))}
           </ul>
         )}
@@ -99,7 +103,7 @@ export const MobileSelectBox = ({
 const st = {
   selectBox: css`
     position: relative;
-    height: 1.771vw;
+    /* height: 1.771vw; */
     width: 6.208vw;
     cursor: pointer;
     @media ${Mq.md} {
