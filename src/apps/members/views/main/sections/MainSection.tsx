@@ -58,6 +58,7 @@ export const MainSection = ({ mainRef }: MainSectionType) => {
             <div css={st.download}>
               <Image src={download} alt="download" fill />
             </div>
+
             <Typography color={Colors.common.white} variant="subtitle2">
               {t("download")}
             </Typography>
