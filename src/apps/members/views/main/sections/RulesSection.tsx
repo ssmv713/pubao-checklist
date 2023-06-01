@@ -37,17 +37,14 @@ export const RulesSection = ({ RulesRef }: RulesSectionType) => {
       <Stack
         direction={isMedium ? "column" : "row"}
         spacing={isMedium ? "4.083vw" : "2.083vw"}
-        css={st.items}
+        css={st.items(isChinese)}
       >
         {items.map((it, index) => (
           <Stack key={index} css={st.item}>
             <Typography css={st.card_title(it.title.color)}>
               {parse(it.title.text)}
             </Typography>
-            <Stack
-              spacing={isMedium ? "7.907vw" : "4.167vw"}
-              css={st.card(hasPadding)}
-            >
+            <Stack spacing={isMedium ? "7.907vw" : "4.167vw"} css={st.card}>
               {it.card.map((list, index) => (
                 <div key={index}>
                   <Typography
@@ -128,9 +125,13 @@ const st = {
       text-align: center;
     }
   `,
-  items: css`
+  items: (isChinese: boolean) => css`
     width: 100%;
     align-items: stretch;
+    & p,
+    h6 {
+      font-weight: ${isChinese && 400};
+    }
   `,
   item: css`
     width: 100%;
@@ -157,7 +158,7 @@ const st = {
       border-radius: 6.512vw;
     }
   `,
-  card: (hasPadding: boolean) => css`
+  card: css`
     padding: 7.292vw 0;
     align-items: center;
     box-shadow: 0vw 0.156vw 0.313vw rgba(0, 0, 0, 0.16);
