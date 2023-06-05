@@ -164,7 +164,7 @@ const st = {
     justify-content: space-between;
     p,
     h6 {
-      font-family: "Noto Sans SC", sans-serif !important;
+      font-family: "ZCOOL XiaoWei", sans-serif !important;
     }
     /* & div:first-child h6,
     div:first-child p {
