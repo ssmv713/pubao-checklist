@@ -13,6 +13,8 @@ import {
   VideoSection,
 } from "./sections";
 import { MobileMainSection } from "./sections/mobile";
+import { useTranslation } from "react-i18next";
+import { css } from "@emotion/react";
 
 export const MainView = () => {
   const mainRef = useRef<HTMLDivElement>(null);
@@ -31,8 +33,10 @@ export const MainView = () => {
     refArr[index].current?.scrollIntoView({ behavior: "smooth" });
   };
   const { isMedium } = useCustomMediaQuery();
+  const { i18n } = useTranslation();
+  const isChinese = i18n.language === "ch";
   return (
-    <>
+    <div css={st.root(isChinese)}>
       {isMedium ? (
         <MobileHeader scrollToSection={scrollToSection} />
       ) : (
@@ -51,6 +55,10 @@ export const MainView = () => {
       <RulesSection RulesRef={RulesRef} />
       <EmailSection ContactRef={ContactRef} />
       <FooterSection handleScrollToTop={handleScrollToTop} />
-    </>
+    </div>
   );
+};
+
+const st = {
+  root: (isChinese: boolean) => css``,
 };
