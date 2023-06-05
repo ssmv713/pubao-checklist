@@ -60,5 +60,9 @@ export const MainView = () => {
 };
 
 const st = {
-  root: (isChinese: boolean) => css``,
+  root: (isChinese: boolean) => css`
+    div {
+      font-family: ${isChinese && "'Noto Sans SC', sans-serif !important"};
+    }
+  `,
 };

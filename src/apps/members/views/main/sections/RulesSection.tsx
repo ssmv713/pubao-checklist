@@ -162,7 +162,11 @@ const st = {
     width: 100%;
     height: 100%;
     justify-content: space-between;
-    & div:first-child h6,
+    p,
+    h6 {
+      font-family: "Noto Sans SC", sans-serif !important;
+    }
+    /* & div:first-child h6,
     div:first-child p {
       font-family: "Noto Serif HK", serif !important;
     }
@@ -179,7 +183,7 @@ const st = {
     & div:last-child h6,
     div:last-child p {
       font-family: "ZCOOL XiaoWei", sans-serif;
-    }
+    } */
 
     @media ${Mq.md} {
       box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
