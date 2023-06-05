@@ -54,6 +54,7 @@ export const RulesSection = ({ RulesRef }: RulesSectionType) => {
                   >
                     {list.rule}
                   </Typography>
+
                   <Typography
                     mt="1.042vw"
                     color={Colors.common.black}
@@ -165,6 +166,7 @@ const st = {
     p,
     h6 {
       font-family: "ZCOOL XiaoWei", sans-serif !important;
+      font-weight: 700;
     }
     /* & div:first-child h6,
     div:first-child p {
