@@ -13,6 +13,7 @@ const baseTypographyOptions: TypographyOptions = {
   h1: {
     fontSize: "5.208vw", //100px
     fontWeight: 400,
+
     "@media (max-width:768px)": {
       fontSize: "6.977vw", //30px
     },
