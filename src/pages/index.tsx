@@ -1,8 +1,9 @@
-import { MainView } from "@/apps/members/views/main/MainView";
 import { NextPage } from "next";
 
+import { TodoView } from "@/apps/members/views/main/ToDoView";
+
 const MainPage: NextPage = () => {
-  return <MainView />;
+  return <TodoView />;
 };
 
 export default MainPage;
