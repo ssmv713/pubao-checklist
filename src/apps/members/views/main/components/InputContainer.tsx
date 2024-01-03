@@ -45,7 +45,8 @@ const st = {
     outline: none;
   `,
   addIcon: css`
-    color: #f5d872;
+    /* color: #f5d872; */
+    color: #27945a;
     font-size: 40px;
     cursor: pointer;
   `,

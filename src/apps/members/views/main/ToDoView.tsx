@@ -103,7 +103,7 @@ const st = {
   inner: css`
     width: 500px;
     height: 400px;
-    border: solid 5px green;
+    /* border: solid 5px green; */
 
     margin: 240px auto 0;
     padding: 15px 10px 15px 18px;
