@@ -1,50 +1,22 @@
-import { useState } from "react";
-
 import Link from "next/link";
 
 import { css } from "@emotion/react";
 import { Stack } from "@mui/material";
 
 import { Content } from "./components/Content";
-import { InputContainer } from "./components/InputContainer";
 
 // import titleLogo from
 export const TodoView = () => {
-  const [list, setList] = useState("");
-
-  async function createTodo() {
-    const res = await fetch(
-      "https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          apikey: "KDT7_GrZ1eYBo", // KDT 7기 APIKEY 입니다!
-          username: "KDT7_ParkYoungWoong",
-        },
-        body: JSON.stringify({
-          title: "아침 먹기!",
-        }),
-      }
-    );
-    const json = await res.json();
-    console.log(json);
-    setList(json.title);
-    console.log(list);
-    return json;
-  }
-  createTodo();
   return (
     <div css={st.root}>
       <div css={st.whitePaper}>
         <div css={st.background}>
           <Stack css={st.centerContainer}>
             <Link href="#">
-              <div css={st.aboutMe}>About Me!</div>
+              <div css={st.aboutUs}>About Us!</div>
             </Link>
             <Stack>
               <div css={st.inner}>
-                <InputContainer />
                 <Content />
               </div>
             </Stack>
@@ -91,7 +63,7 @@ const st = {
     position: relative;
     width: 600px;
   `,
-  aboutMe: css`
+  aboutUs: css`
     position: absolute;
     top: 140px;
     left: 40px;
