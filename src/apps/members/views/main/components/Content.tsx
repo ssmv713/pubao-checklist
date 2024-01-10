@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Image from "next/image";
 
@@ -16,7 +16,32 @@ export const Content = () => {
   const handleChange = (event) => {
     setInputValue(event.target.value);
   };
-  async function createTodo() {
+
+  useEffect(() => {
+    getTodo();
+  }, []);
+
+  const getTodo = async () => {
+    const res = await fetch(
+      "https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos",
+      {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          apikey: "KDT7_GrZ1eYBo", // KDT 7기 APIKEY 입니다!
+          username: "KDT7_ShimSoMang",
+        },
+      }
+    );
+    const json = await res.json();
+    console.log(json);
+  };
+
+  const createTodo = async () => {
+    if (inputValue === "") {
+      alert("내용을 입력해 주세요");
+      return;
+    }
     const res = await fetch(
       "https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos",
       {
@@ -31,14 +56,17 @@ export const Content = () => {
         }),
       }
     );
-    // const json = await res.json();
-    // console.log(json);
-    setLists([...lists, inputValue]);
+    const json = await res.json();
+
+    setLists([...lists, json.title]);
     setInputValue("");
-
+    console.log(json);
+    console.log(lists);
     // return json;
-  }
-
+  };
+  const handleDelete = () => {
+    alert("delete");
+  };
   return (
     <Stack>
       <div css={st.root}>
@@ -69,7 +97,6 @@ export const Content = () => {
               id="all"
               name="filter"
               value="all"
-              checked
             />
             <label htmlFor="all">전체</label>
             <input
@@ -94,7 +121,7 @@ export const Content = () => {
           <IconButton>
             <EditIcon />
           </IconButton>
-          <IconButton>
+          <IconButton onClick={handleDelete}>
             <DeleteIcon />
           </IconButton>
         </div>
@@ -104,7 +131,7 @@ export const Content = () => {
           <Stack css={st.listRow} key={index} direction="row">
             <Stack direction="row" alignItems={"center"}>
               <input type="checkbox" css={st.checkbox} />
-              <div css={st.title}>t{title}</div>
+              <div css={st.title}>{title}</div>
             </Stack>
             <DragIndicatorIcon sx={{ color: "#0000008a" }} />
           </Stack>

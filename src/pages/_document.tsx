@@ -15,11 +15,11 @@ export default function Document() {
 
 const CustomHead = () => {
   const title = process.env.NEXT_PUBLIC_PROJECT_DISPLAY_NAME;
-  const faviconUrl = "/favicon.svg";
+  const faviconUrl = "/panda.png";
 
   return (
     <Head>
-      <title>체크리스트 ✅</title>
+      <title>푸바오네 오신걸 환영합니다~🐼👋</title>
       <meta
         name="description"
         content="자국에 소개하고 싶은 '한국문화'를 영상으로 만드는 공모전"

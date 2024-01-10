@@ -12,7 +12,7 @@ export const TodoView = () => {
       <div css={st.whitePaper}>
         <div css={st.background}>
           <Stack css={st.centerContainer}>
-            <Link href="#">
+            <Link href="/about">
               <div css={st.aboutUs}>About Us!</div>
             </Link>
             <Stack>
@@ -38,7 +38,7 @@ const st = {
   `,
   whitePaper: css`
     width: 800px;
-    height: 800px;
+    height: 740px;
     background-color: #fff;
     position: relative;
   `,
