@@ -22,6 +22,7 @@ export const Content = () => {
   }, []);
 
   const getTodo = async () => {
+    // alert("데이터 가져오기");
     const res = await fetch(
       "https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos",
       {
@@ -29,12 +30,13 @@ export const Content = () => {
         headers: {
           "content-type": "application/json",
           apikey: "KDT7_GrZ1eYBo", // KDT 7기 APIKEY 입니다!
-          username: "KDT7_ShimSoMang",
+          username: "KDT7_ShimSooMang",
         },
       }
     );
-    const json = await res.json();
-    console.log(json);
+    const data = await res.json();
+    console.log(data);
+    setLists([data.title]);
   };
 
   const createTodo = async () => {
@@ -49,7 +51,7 @@ export const Content = () => {
         headers: {
           "content-type": "application/json",
           apikey: "KDT7_GrZ1eYBo", // KDT 7기 APIKEY 입니다!
-          username: "KDT7_ShimSoMang",
+          username: "KDT7_ShimSooMang",
         },
         body: JSON.stringify({
           title: inputValue,
@@ -61,7 +63,7 @@ export const Content = () => {
     setLists([...lists, json.title]);
     setInputValue("");
     console.log(json);
-    console.log(lists);
+    // console.log(lists);
     // return json;
   };
   const handleDelete = () => {
@@ -78,6 +80,7 @@ export const Content = () => {
             type="text"
             value={inputValue}
             placeholder="새로운 할일을 작성하세요."
+            maxLength={5}
           />
         </Stack>
         <AddCircleRoundedIcon onClick={createTodo} css={st.addIcon} />
@@ -127,11 +130,11 @@ export const Content = () => {
         </div>
       </Stack>
       <Stack gap="20px">
-        {lists.map((title, index) => (
+        {lists.map((lists, index) => (
           <Stack css={st.listRow} key={index} direction="row">
             <Stack direction="row" alignItems={"center"}>
               <input type="checkbox" css={st.checkbox} />
-              <div css={st.title}>{title}</div>
+              <div css={st.title}>{lists}</div>
             </Stack>
             <DragIndicatorIcon sx={{ color: "#0000008a" }} />
           </Stack>

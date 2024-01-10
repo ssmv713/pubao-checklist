@@ -22,6 +22,11 @@
       "@/*": ["src/*", "public/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/apps/members/views/main/components/Content.jsx"
+  ],
   "exclude": ["node_modules"]
 }
