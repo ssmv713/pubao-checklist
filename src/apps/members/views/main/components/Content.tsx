@@ -3,8 +3,11 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 import searchBar from "@/assets/icons/searchBar.svg";
+import { ListsType } from "@/types/lists.type";
 import { css } from "@emotion/react";
 import AddCircleRoundedIcon from "@mui/icons-material/AddCircleRounded";
+import CheckIcon from "@mui/icons-material/Check";
+import CloseIcon from "@mui/icons-material/Close";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 import EditIcon from "@mui/icons-material/Edit";
@@ -12,15 +15,42 @@ import { IconButton, Stack } from "@mui/material";
 
 export const Content = () => {
   const [inputValue, setInputValue] = useState("");
-  const [lists, setLists] = useState<string[]>([]);
+  const [lists, setLists] = useState<ListsType[]>([]);
+  const [editingId, setEditingId] = useState();
+  const [editText, setEditText] = useState();
+  const startEditing = (lists) => {
+    setEditingId(lists.id);
+    setEditText(lists.title);
+  };
+
   const handleChange = (event) => {
     setInputValue(event.target.value);
   };
-
+  const handleChangeEditText = (event) => {
+    setEditText(event.target.value);
+  };
   useEffect(() => {
     getTodo();
   }, []);
-
+  const saveTodo = async () => {
+    const res = await fetch(
+      "https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos",
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+          apikey: "KDT7_GrZ1eYBo", // KDT 7기 APIKEY 입니다!
+          username: "KDT7_ShimSooMang",
+        },
+        body: JSON.stringify({
+          title: editText,
+          done: false,
+        }),
+      }
+    );
+    const data = await res.json();
+    console.log(data);
+  };
   const getTodo = async () => {
     // alert("데이터 가져오기");
     const res = await fetch(
@@ -35,8 +65,8 @@ export const Content = () => {
       }
     );
     const data = await res.json();
-    console.log(data);
-    setLists([data.title]);
+    // console.log(data);
+    setLists([...lists, ...data]);
   };
 
   const createTodo = async () => {
@@ -58,17 +88,19 @@ export const Content = () => {
         }),
       }
     );
-    const json = await res.json();
+    const data = await res.json();
 
-    setLists([...lists, json.title]);
+    setLists([...lists, data]);
     setInputValue("");
-    console.log(json);
+
     // console.log(lists);
     // return json;
   };
   const handleDelete = () => {
     alert("delete");
   };
+
+  console.log(lists.map((it) => it.title));
   return (
     <Stack>
       <div css={st.root}>
@@ -129,14 +161,45 @@ export const Content = () => {
           </IconButton>
         </div>
       </Stack>
-      <Stack gap="20px">
+
+      <Stack gap="20px" css={st.listsContainer}>
         {lists.map((lists, index) => (
           <Stack css={st.listRow} key={index} direction="row">
             <Stack direction="row" alignItems={"center"}>
               <input type="checkbox" css={st.checkbox} />
-              <div css={st.title}>{lists}</div>
+              {editingId === lists.id ? (
+                <input
+                  type="text"
+                  onChange={handleChangeEditText}
+                  value={editText}
+                />
+              ) : (
+                <div css={st.title}>{lists.title}</div>
+              )}
             </Stack>
-            <DragIndicatorIcon sx={{ color: "#0000008a" }} />
+            <Stack direction="row" alignItems={"center"}>
+              {editingId === lists.id ? (
+                <>
+                  <IconButton onClick={() => {}}>
+                    <CloseIcon />
+                  </IconButton>
+                  <IconButton onClick={saveTodo}>
+                    <CheckIcon />
+                  </IconButton>
+                </>
+              ) : (
+                <>
+                  <IconButton onClick={() => startEditing(lists)}>
+                    <EditIcon />
+                  </IconButton>
+                  <IconButton onClick={handleDelete}>
+                    <DeleteIcon />
+                  </IconButton>
+                </>
+              )}
+
+              <DragIndicatorIcon sx={{ color: "#0000008a" }} />
+            </Stack>
           </Stack>
         ))}
       </Stack>
@@ -198,9 +261,13 @@ const st = {
     padding-right: 18px;
     align-items: center;
     justify-content: space-between;
-    /* align-items: center; */
   `,
   title: css`
     margin-left: 18px;
+  `,
+  listsContainer: css`
+    height: 250px;
+    padding-top: 6px;
+    overflow: scroll;
   `,
 };
