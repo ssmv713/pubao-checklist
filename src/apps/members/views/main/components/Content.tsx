@@ -18,6 +18,15 @@ export const Content = () => {
   const [lists, setLists] = useState<ListsType[]>([]);
   const [editingId, setEditingId] = useState();
   const [editText, setEditText] = useState();
+  const [selectAll, setSelectAll] = useState(false);
+  const handleSelectAll = () => {
+    const updatedCheckboxes = lists.map((checkbox) => ({
+      ...checkbox,
+      checked: !selectAll,
+    }));
+    setLists(updatedCheckboxes);
+    setSelectAll(!selectAll);
+  };
   const startEditing = (lists) => {
     setEditingId(lists.id);
     setEditText(lists.title);
@@ -29,12 +38,15 @@ export const Content = () => {
   const handleChangeEditText = (event) => {
     setEditText(event.target.value);
   };
+  const cancelEditing = () => {
+    setEditingId(undefined);
+  };
   useEffect(() => {
     getTodo();
   }, []);
-  const saveTodo = async () => {
+  const saveTodo = async (id) => {
     const res = await fetch(
-      "https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos",
+      `https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos/${id}`,
       {
         method: "PUT",
         headers: {
@@ -49,7 +61,10 @@ export const Content = () => {
       }
     );
     const data = await res.json();
-    console.log(data);
+
+    setEditingId(undefined);
+
+    setLists([...lists, data]);
   };
   const getTodo = async () => {
     // alert("데이터 가져오기");
@@ -96,15 +111,27 @@ export const Content = () => {
     // console.log(lists);
     // return json;
   };
-  const handleDelete = () => {
-    alert("delete");
+  const handleDelete = async (id) => {
+    const res = await fetch(
+      `https://asia-northeast3-heropy-api.cloudfunctions.net/api/todos/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+          apikey: "KDT7_GrZ1eYBo", // KDT 7기 APIKEY 입니다!
+          username: "KDT7_ShimSooMang",
+        },
+      }
+    );
+
+    setLists(lists.filter((list) => list.id !== id));
   };
 
   console.log(lists.map((it) => it.title));
   return (
     <Stack>
       <div css={st.root}>
-        <Stack direction="row">
+        <Stack direction="row" css={st.searchLeft}>
           <Image src={searchBar} alt="searchBar" />
           <input
             onChange={handleChange}
@@ -112,14 +139,13 @@ export const Content = () => {
             type="text"
             value={inputValue}
             placeholder="새로운 할일을 작성하세요."
-            maxLength={5}
           />
         </Stack>
         <AddCircleRoundedIcon onClick={createTodo} css={st.addIcon} />
       </div>
       <Stack direction="row" css={st.topRow}>
         <Stack direction="row">
-          <input type="checkbox" css={st.checkbox} />
+          <input checked={selectAll} type="checkbox" css={st.checkbox} />
           <Stack
             gap="12px"
             css={st.radioButtons}
@@ -165,13 +191,15 @@ export const Content = () => {
       <Stack gap="20px" css={st.listsContainer}>
         {lists.map((lists, index) => (
           <Stack css={st.listRow} key={index} direction="row">
-            <Stack direction="row" alignItems={"center"}>
+            <Stack direction="row" alignItems={"center"} css={st.listLeft}>
               <input type="checkbox" css={st.checkbox} />
               {editingId === lists.id ? (
                 <input
+                  css={st.editInput}
                   type="text"
                   onChange={handleChangeEditText}
                   value={editText}
+                  checked={lists.done}
                 />
               ) : (
                 <div css={st.title}>{lists.title}</div>
@@ -180,10 +208,10 @@ export const Content = () => {
             <Stack direction="row" alignItems={"center"}>
               {editingId === lists.id ? (
                 <>
-                  <IconButton onClick={() => {}}>
+                  <IconButton onClick={cancelEditing}>
                     <CloseIcon />
                   </IconButton>
-                  <IconButton onClick={saveTodo}>
+                  <IconButton onClick={() => saveTodo(lists.id)}>
                     <CheckIcon />
                   </IconButton>
                 </>
@@ -192,7 +220,7 @@ export const Content = () => {
                   <IconButton onClick={() => startEditing(lists)}>
                     <EditIcon />
                   </IconButton>
-                  <IconButton onClick={handleDelete}>
+                  <IconButton onClick={() => handleDelete(lists.id)}>
                     <DeleteIcon />
                   </IconButton>
                 </>
@@ -221,11 +249,15 @@ const st = {
     align-items: center;
     justify-content: space-between;
   `,
+  searchLeft: css`
+    flex: 1;
+  `,
   input: css`
     margin-left: 20px;
     border: none;
     background: transparent;
     outline: none;
+    flex: 1;
   `,
   addIcon: css`
     /* color: #f5d872; */
@@ -262,8 +294,15 @@ const st = {
     align-items: center;
     justify-content: space-between;
   `,
+  listLeft: css`
+    flex: 1;
+  `,
   title: css`
     margin-left: 18px;
+  `,
+  editInput: css`
+    margin-left: 18px;
+    flex: 1;
   `,
   listsContainer: css`
     height: 250px;

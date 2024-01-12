@@ -41,6 +41,9 @@ const st = {
     height: 740px;
     background-color: #fff;
     position: relative;
+    @media (max-width: 800px) {
+      width: 100%; //30px
+    }
   `,
   background: css`
     position: absolute;
@@ -57,11 +60,16 @@ const st = {
     opacity: 0.8;
     display: flex;
     justify-content: center;
-    /* border: solid 10px red; */
+    @media (max-width: 800px) {
+      width: 100%; //30px
+    }
   `,
   centerContainer: css`
     position: relative;
     width: 600px;
+    @media (max-width: 600px) {
+      width: 100%; //30px
+    }
   `,
   aboutUs: css`
     position: absolute;
@@ -79,5 +87,8 @@ const st = {
 
     margin: 240px auto 0;
     padding: 15px 10px 15px 18px;
+    @media (max-width: 500px) {
+      width: 100%; //30px
+    }
   `,
 };
